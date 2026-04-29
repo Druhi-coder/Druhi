@@ -433,22 +433,6 @@
   }
 
   /* ── RESPONSIVE ── */
-  @media (max-width: 768px) {
-    nav { padding: 20px 24px; }
-    .nav-links { display: none; }
-    .hero { padding: 100px 24px 60px; }
-    .hero-bottom { grid-template-columns: 1fr; }
-    .hero-meta { text-align: left; }
-    .section { padding: 80px 24px; }
-    .numbers-strip { grid-template-columns: 1fr 1fr; }
-    .work-item { grid-template-columns: 1fr; gap: 16px; }
-    .work-item:hover { margin: 0 -24px; padding: 48px 24px; }
-    .work-num { display: none; }
-    .pull-quote { padding: 80px 24px; }
-    .rec-grid { grid-template-columns: 1fr; }
-    .contact-section { grid-template-columns: 1fr; padding: 80px 24px; gap: 48px; }
-    footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
-  }
 
   /* ── QUOTES ── */
   .quotes-list {
@@ -495,9 +479,117 @@
     padding-left: 32px;
   }
 
-  @media (max-width: 768px) {
-    .quote-card { grid-template-columns: 1fr; gap: 20px; }
-    .quote-text { padding-left: 20px; }
+
+  /* ── LARGE DESKTOP 1400px+ ── */
+  @media (min-width: 1400px) {
+    nav { padding: 28px 80px; }
+    .hero { padding: 140px 80px 100px; }
+    .hero-name { font-size: 160px; }
+    .section { padding: 140px 80px; }
+    .pull-quote { padding: 140px 80px; }
+    .contact-section { padding: 140px 80px; }
+    footer { padding: 40px 80px; }
+  }
+
+  /* ── IPAD PRO LANDSCAPE / LARGE LAPTOP 1024–1399px ── */
+  @media (max-width: 1280px) {
+    .hero-name { font-size: clamp(72px, 9vw, 120px); }
+    nav { padding: 22px 48px; }
+    .hero { padding: 110px 48px 72px; }
+    .section { padding: 100px 48px; }
+    .pull-quote { padding: 100px 48px; }
+    .contact-section { padding: 100px 48px; gap: 60px; }
+    footer { padding: 28px 48px; }
+  }
+
+  /* ── IPAD PORTRAIT + TABLET 768–1023px ── */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    nav { padding: 20px 36px; }
+    .nav-links { gap: 24px; }
+    .hero { padding: 100px 36px 64px; }
+    .hero-name { font-size: clamp(52px, 8vw, 88px); letter-spacing: -2px; }
+    .hero-bottom { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .hero-statement { font-size: 18px; }
+    .numbers-strip { grid-template-columns: repeat(4, 1fr); }
+    .num-block { padding: 28px 14px; }
+    .num-block .n { font-size: 34px; }
+    .section { padding: 80px 36px; }
+    .section-title { font-size: 38px; }
+    .work-item { grid-template-columns: 56px 1fr 1fr; gap: 28px; }
+    .work-item:hover { margin: 0 -36px; padding: 48px 36px; }
+    .work-title { font-size: 24px; }
+    .pull-quote { padding: 80px 36px; }
+    .pull-quote blockquote { font-size: 24px; }
+    .rec-grid { grid-template-columns: 1fr 1fr; }
+    .quote-card { grid-template-columns: 1fr; gap: 16px; }
+    .quote-text { font-size: 18px; }
+    .contact-section { padding: 80px 36px; gap: 48px; }
+    .contact-left h2 { font-size: 34px; }
+    footer { padding: 24px 36px; }
+  }
+
+  /* ── MOBILE 480–767px ── */
+  @media (max-width: 767px) {
+    nav { padding: 16px 20px; }
+    .nav-links { display: none; }
+    .nav-name { font-size: 15px; }
+    .hero { padding: 80px 20px 48px; min-height: auto; }
+    .hero-eyebrow { font-size: 9px; letter-spacing: 2px; margin-bottom: 16px; }
+    .hero-name { font-size: clamp(44px, 12vw, 68px); letter-spacing: -2px; margin-bottom: 28px; }
+    .hero-bottom { grid-template-columns: 1fr; gap: 20px; }
+    .hero-statement { font-size: 16px; line-height: 1.6; }
+    .hero-meta { text-align: left; }
+    .hero-meta p { font-size: 11px; line-height: 2; }
+    .numbers-strip { grid-template-columns: 1fr 1fr; }
+    .num-block { padding: 22px 14px; }
+    .num-block .n { font-size: 30px; letter-spacing: -1px; }
+    .num-block .nl { font-size: 8px; letter-spacing: 1px; }
+    .num-block:nth-child(2) { border-right: none; }
+    .num-block:nth-child(3) { border-top: 1px solid var(--rule); }
+    .num-block:nth-child(4) { border-top: 1px solid var(--rule); border-right: none; }
+    .section { padding: 52px 20px; }
+    .section-header { margin-bottom: 28px; gap: 12px; }
+    .section-title { font-size: 28px; }
+    .work-item { grid-template-columns: 1fr; gap: 10px; padding: 28px 0; }
+    .work-item:hover { margin: 0; padding: 28px 0; background: none; }
+    .work-num { display: none; }
+    .work-title { font-size: 22px; }
+    .work-tag { font-size: 9px; }
+    .work-body { font-size: 14px; line-height: 1.7; }
+    .work-proof { font-size: 13px; margin-top: 10px; }
+    .pull-quote { padding: 52px 20px; }
+    .pull-quote blockquote { font-size: 19px; line-height: 1.5; }
+    .pull-quote .quote-attr { font-size: 9px; margin-top: 24px; }
+    .rec-grid { grid-template-columns: 1fr; }
+    .rec-item { padding: 20px; }
+    .rec-org { font-size: 9px; }
+    .rec-desc { font-size: 16px; }
+    .quote-card { grid-template-columns: 1fr; gap: 14px; padding: 32px 0; }
+    .quote-name { font-size: 18px; }
+    .quote-role { font-size: 9px; line-height: 1.8; }
+    .quote-text { font-size: 16px; padding-left: 16px; }
+    .contact-section { grid-template-columns: 1fr; padding: 52px 20px; gap: 32px; }
+    .contact-left h2 { font-size: 28px; letter-spacing: -1px; }
+    .contact-left p { font-size: 14px; }
+    .contact-link { padding: 18px 0; }
+    .cl-val { font-size: 14px; }
+    footer { padding: 20px; flex-direction: column; gap: 6px; text-align: center; }
+    footer p { font-size: 9px; }
+  }
+
+  /* ── MOBILE SMALL max 380px (iPhone SE) ── */
+  @media (max-width: 380px) {
+    nav { padding: 14px 16px; }
+    .hero { padding: 72px 16px 40px; }
+    .hero-name { font-size: 38px; letter-spacing: -1px; }
+    .section { padding: 44px 16px; }
+    .pull-quote { padding: 44px 16px; }
+    .contact-section { padding: 44px 16px; }
+    .num-block .n { font-size: 26px; }
+    .work-title { font-size: 19px; }
+    .quote-text { font-size: 15px; }
+    .contact-left h2 { font-size: 24px; }
+    .pull-quote blockquote { font-size: 17px; }
   }
 
 </style>
@@ -527,7 +619,7 @@
     <div class="hero-meta">
       <p>Health AI &nbsp;·&nbsp; CANary</p>
       <p>Community &nbsp;·&nbsp; DRiSe</p>
-      <p>Research &nbsp;·&nbsp; Dhara Tattva</p>
+      <p>Startup &nbsp;·&nbsp; Dhara Tattva</p>
       <p>₹0 funding &nbsp;·&nbsp; 10,000+ lives</p>
     </div>
   </div>
@@ -594,7 +686,7 @@
       <span class="work-num">003</span>
       <div>
         <div class="work-title">Dhara Tattva</div>
-        <div class="work-tag">Circular Economy &nbsp;·&nbsp; 2022 – Present</div>
+        <div class="work-tag">Startup &nbsp;·&nbsp; Circular Economy &nbsp;·&nbsp; 2022 – Present</div>
       </div>
       <div>
         <p class="work-body">
@@ -704,7 +796,7 @@
     </div>
     <div class="rec-item">
       <div class="rec-org">IIT Delhi</div>
-      <div class="rec-desc">Research paper verification — organic waste management</div>
+      <div class="rec-desc">Research verified by IIT Delhi — Dhara Tattva circular economy startup</div>
     </div>
     <div class="rec-item">
       <div class="rec-org">H.C. Verma · David Tong · Leonard Susskind</div>
