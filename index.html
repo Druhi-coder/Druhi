@@ -3,439 +3,762 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Druhi — Founder & Builder</title>
+<title>Druhi Sarupria</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --gold: #C8A96E;
-    --gold-dim: #7A6340;
-    --gold-pale: #C8A96E22;
-    --bg: #0A0A0F;
-    --card: #13131A;
-    --card-bd: #222230;
-    --white: #F0EDE8;
-    --gray1: #E8E4DE;
-    --gray2: #999;
-    --gray3: #555;
-    --pill-bg: #1A1A26;
-    --pill-bd: #2A2A40;
+    --cream:   #F7F3EE;
+    --ink:     #0F0E0C;
+    --ink2:    #2A2720;
+    --ink3:    #6B6560;
+    --ink4:    #B0A89E;
+    --gold:    #8B6914;
+    --gold2:   #C4A55A;
+    --rule:    #DDD8D0;
+    --card:    #F0EBE3;
   }
 
   html { scroll-behavior: smooth; }
 
   body {
-    background: var(--bg);
-    color: var(--white);
+    background: var(--cream);
+    color: var(--ink);
     font-family: 'DM Sans', sans-serif;
-    min-height: 100vh;
+    font-weight: 300;
+    line-height: 1.6;
     overflow-x: hidden;
   }
 
-  .grain {
+  /* ── NAVIGATION ── */
+  nav {
     position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.4;
-  }
-
-  .page {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 64px 48px 80px;
-    position: relative;
-    z-index: 1;
-  }
-
-  /* TOP */
-  .top {
+    top: 0; left: 0; right: 0;
+    z-index: 100;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 0;
-    opacity: 0;
-    animation: fadeUp 0.7s 0.1s forwards;
-  }
-
-  .name {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(52px, 8vw, 80px);
-    font-weight: 900;
-    line-height: 1;
-    letter-spacing: -3px;
-    color: var(--white);
-  }
-
-  .name span { color: var(--gold); }
-
-  .role {
-    margin-top: 10px;
-    font-size: 11px;
-    letter-spacing: 3.5px;
-    text-transform: uppercase;
-    color: var(--gray3);
-    font-weight: 400;
-  }
-
-  .age-badge {
-    background: var(--pill-bg);
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    padding: 8px 18px;
-    border-radius: 3px;
-    margin-top: 8px;
-    white-space: nowrap;
-  }
-
-  /* DIVIDER */
-  .divider {
-    height: 1px;
-    background: linear-gradient(90deg, var(--gold) 0%, var(--card-bd) 40%, transparent 100%);
-    margin: 28px 0 32px;
-    opacity: 0;
-    animation: fadeUp 0.7s 0.2s forwards;
-  }
-
-  /* HOOK */
-  .hook {
-    border-left: 3px solid var(--gold);
-    padding-left: 24px;
-    margin-bottom: 36px;
-    opacity: 0;
-    animation: fadeUp 0.7s 0.3s forwards;
-  }
-
-  .hook p {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(16px, 2.2vw, 22px);
-    font-weight: 400;
-    line-height: 1.55;
-    color: var(--gray1);
-  }
-
-  .hook p em {
-    color: var(--gold);
-    font-style: normal;
-    font-weight: 700;
-  }
-
-  /* NUMBERS */
-  .numbers {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    border: 1px solid var(--card-bd);
-    border-radius: 4px;
-    overflow: hidden;
-    margin-bottom: 32px;
-    opacity: 0;
-    animation: fadeUp 0.7s 0.4s forwards;
-  }
-
-  .num-cell {
-    padding: 20px 12px;
-    text-align: center;
-    border-right: 1px solid var(--card-bd);
-  }
-
-  .num-cell:last-child { border-right: none; }
-
-  .num-cell .n {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(22px, 3.5vw, 32px);
-    font-weight: 700;
-    color: var(--gold);
-    line-height: 1;
-  }
-
-  .num-cell .nl {
-    font-size: 9px;
-    color: var(--gray3);
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin-top: 7px;
-  }
-
-  /* CARDS */
-  .cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    margin-bottom: 32px;
-    opacity: 0;
-    animation: fadeUp 0.7s 0.5s forwards;
-  }
-
-  .card {
-    background: var(--card);
-    border: 1px solid var(--card-bd);
-    border-radius: 4px;
-    padding: 22px 22px 22px 28px;
-    position: relative;
-    transition: border-color 0.25s, transform 0.25s;
-  }
-
-  .card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 3px; height: 100%;
-    background: var(--gold);
-    border-radius: 4px 0 0 4px;
-  }
-
-  .card:hover {
-    border-color: var(--gold-dim);
-    transform: translateY(-2px);
-  }
-
-  .card-label {
-    font-size: 9px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 10px;
-    font-weight: 500;
-  }
-
-  .card-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 19px;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 8px;
-    line-height: 1.3;
-  }
-
-  .card-body {
-    font-size: 13px;
-    line-height: 1.7;
-    color: var(--gray2);
-    font-weight: 300;
-  }
-
-  .card-body strong {
-    color: var(--gray1);
-    font-weight: 500;
-  }
-
-  .card-proof {
-    margin-top: 8px;
-    font-size: 12px;
-    color: var(--gold-dim);
-    font-weight: 500;
-    font-style: italic;
-  }
-
-  /* PROOF */
-  .proof-section {
-    margin-bottom: 36px;
-    opacity: 0;
-    animation: fadeUp 0.7s 0.6s forwards;
-  }
-
-  .section-label {
-    font-size: 9px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gray3);
-    margin-bottom: 14px;
-    font-weight: 500;
-  }
-
-  .pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .pill {
-    background: var(--pill-bg);
-    border: 1px solid var(--pill-bd);
-    border-radius: 3px;
-    padding: 6px 14px;
-    font-size: 12px;
-    color: var(--gray2);
-  }
-
-  .pill strong {
-    color: var(--gold);
-    font-weight: 500;
-  }
-
-  /* BOTTOM */
-  .bottom {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 24px;
     align-items: center;
-    opacity: 0;
-    animation: fadeUp 0.7s 0.7s forwards;
+    padding: 24px 64px;
+    background: var(--cream);
+    border-bottom: 1px solid var(--rule);
   }
 
-  .the-ask {
-    background: var(--gold);
-    border-radius: 4px;
-    padding: 28px 32px;
+  .nav-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--ink);
+    text-decoration: none;
   }
 
-  .the-ask .ask-label {
-    font-size: 9px;
-    letter-spacing: 2.5px;
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 12px;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--gold-dim);
-    margin-bottom: 10px;
-    font-weight: 500;
-  }
-
-  .the-ask p {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(15px, 2vw, 19px);
-    font-weight: 700;
-    color: #0A0A0F;
-    line-height: 1.5;
-  }
-
-  .contact {
-    padding: 8px 0;
-    min-width: 180px;
-  }
-
-  .contact .c-label {
-    font-size: 9px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--gray3);
-    margin-bottom: 12px;
-  }
-
-  .contact a, .contact span {
-    display: block;
-    font-size: 13px;
-    color: var(--gold);
-    margin-bottom: 6px;
+    color: var(--ink3);
     text-decoration: none;
     transition: color 0.2s;
   }
 
-  .contact a:hover { color: var(--white); }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 64px 80px;
+    padding-top: 120px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+    font-weight: 400;
+  }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(72px, 11vw, 148px);
+    font-weight: 300;
+    line-height: 0.92;
+    letter-spacing: -3px;
+    color: var(--ink);
+    margin-bottom: 48px;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--ink2);
+  }
+
+  .hero-rule {
+    width: 100%;
+    height: 1px;
+    background: var(--rule);
+    margin-bottom: 40px;
+  }
+
+  .hero-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    align-items: end;
+  }
+
+  .hero-statement {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--ink2);
+    grid-column: 1 / 3;
+  }
+
+  .hero-meta {
+    text-align: right;
+  }
+
+  .hero-meta p {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--ink4);
+    line-height: 2;
+  }
+
+  /* ── SECTION WRAPPER ── */
+  .section {
+    padding: 120px 64px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    margin-bottom: 72px;
+  }
+
+  .section-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    color: var(--ink4);
+    letter-spacing: 1px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 300;
+    letter-spacing: -1px;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  /* ── NUMBERS STRIP ── */
+  .numbers-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--rule);
+    border-left: 1px solid var(--rule);
+    margin-bottom: 0;
+  }
+
+  .num-block {
+    padding: 48px 40px;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .num-block .n {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 5vw, 64px);
+    font-weight: 300;
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: -2px;
+  }
+
+  .num-block .nl {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--ink4);
+    margin-top: 10px;
+  }
+
+  /* ── WORK ITEMS ── */
+  .work-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .work-item {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr;
+    gap: 48px;
+    padding: 48px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: start;
+    transition: background 0.3s;
+    cursor: default;
+  }
+
+  .work-item:first-child { border-top: 1px solid var(--rule); }
+
+  .work-item:hover { background: var(--card); margin: 0 -64px; padding: 48px 64px; }
+
+  .work-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    color: var(--ink4);
+    padding-top: 6px;
+  }
+
+  .work-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 2.5vw, 32px);
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+
+  .work-tag {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  .work-body {
+    font-size: 15px;
+    color: var(--ink3);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  .work-body strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .work-proof {
+    margin-top: 16px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    padding: 120px 64px;
+    background: var(--ink);
+    border-top: 1px solid var(--rule);
+  }
+
+  .pull-quote blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 4vw, 52px);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.35;
+    color: var(--cream);
+    max-width: 860px;
+  }
+
+  .pull-quote blockquote em {
+    color: var(--gold2);
+    font-style: normal;
+  }
+
+  .pull-quote .quote-attr {
+    margin-top: 40px;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ink4);
+  }
+
+  /* ── RECOGNITION ── */
+  .rec-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid var(--rule);
+    border-left: 1px solid var(--rule);
+  }
+
+  .rec-item {
+    padding: 36px 40px;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .rec-org {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .rec-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    padding: 120px 64px;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .contact-left h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -1.5px;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+
+  .contact-left p {
+    font-size: 15px;
+    color: var(--ink3);
+    line-height: 1.8;
+    max-width: 380px;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-top: 8px;
+  }
+
+  .contact-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--rule);
+    text-decoration: none;
+    transition: padding-left 0.25s;
+  }
+
+  .contact-link:first-child { border-top: 1px solid var(--rule); }
+
+  .contact-link:hover { padding-left: 12px; }
+
+  .contact-link .cl-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--ink4);
+  }
+
+  .contact-link .cl-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--ink);
+  }
+
+  .contact-link .cl-arrow {
+    font-size: 18px;
+    color: var(--ink4);
+    transition: color 0.2s;
+  }
+
+  .contact-link:hover .cl-arrow { color: var(--ink); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 32px 64px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer p {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--ink4);
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: fadeUp 0.8s forwards;
+  }
+
+  .fade-up:nth-child(1) { animation-delay: 0.1s; }
+  .fade-up:nth-child(2) { animation-delay: 0.25s; }
+  .fade-up:nth-child(3) { animation-delay: 0.4s; }
 
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to   { opacity: 1; transform: translateY(0); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
-  @media (max-width: 640px) {
-    .page { padding: 40px 24px 60px; }
-    .numbers { grid-template-columns: repeat(2, 1fr); }
-    .num-cell:nth-child(2) { border-right: none; }
-    .num-cell:nth-child(3) { border-top: 1px solid var(--card-bd); }
-    .num-cell:nth-child(4) { border-top: 1px solid var(--card-bd); border-right: none; }
-    .cards { grid-template-columns: 1fr; }
-    .bottom { grid-template-columns: 1fr; }
-    .top { flex-direction: column; gap: 16px; }
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 20px 24px; }
+    .nav-links { display: none; }
+    .hero { padding: 100px 24px 60px; }
+    .hero-bottom { grid-template-columns: 1fr; }
+    .hero-meta { text-align: left; }
+    .section { padding: 80px 24px; }
+    .numbers-strip { grid-template-columns: 1fr 1fr; }
+    .work-item { grid-template-columns: 1fr; gap: 16px; }
+    .work-item:hover { margin: 0 -24px; padding: 48px 24px; }
+    .work-num { display: none; }
+    .pull-quote { padding: 80px 24px; }
+    .rec-grid { grid-template-columns: 1fr; }
+    .contact-section { grid-template-columns: 1fr; padding: 80px 24px; gap: 48px; }
+    footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
   }
+
+  /* ── QUOTES ── */
+  .quotes-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .quote-card {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 64px;
+    padding: 56px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: start;
+  }
+
+  .quote-card:first-child { border-top: 1px solid var(--rule); }
+
+  .quote-name {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+  }
+
+  .quote-role {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--gold);
+    line-height: 1.7;
+    text-transform: uppercase;
+  }
+
+  .quote-text {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--ink2);
+    border-left: 2px solid var(--gold2);
+    padding-left: 32px;
+  }
+
+  @media (max-width: 768px) {
+    .quote-card { grid-template-columns: 1fr; gap: 20px; }
+    .quote-text { padding-left: 20px; }
+  }
+
 </style>
 </head>
 <body>
-<div class="grain"></div>
-<div class="page">
 
-  <div class="top">
-    <div>
-      <div class="name">Druhi<span>.</span></div>
-      <div class="role">Founder &nbsp;·&nbsp; Builder &nbsp;·&nbsp; Rajasthan, India</div>
-    </div>
-    <div class="age-badge">Age &nbsp;17</div>
-  </div>
+<!-- NAV -->
+<nav>
+  <a class="nav-name" href="#">Druhi Sarupria</a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#recognition">Recognition</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-  <div class="divider"></div>
-
-  <div class="hook">
-    <p>She built an AI health platform used by <em>10,000+ people</em> —<br>
-    alone, no funding, while preparing for <em>India's hardest exam.</em><br>
-    She's not a prodigy. She's a force you haven't heard of yet.</p>
-  </div>
-
-  <div class="numbers">
-    <div class="num-cell">
-      <div class="n">10,000+</div>
-      <div class="nl">CANary users</div>
-    </div>
-    <div class="num-cell">
-      <div class="n">2,000+</div>
-      <div class="nl">Women reached</div>
-    </div>
-    <div class="num-cell">
-      <div class="n">12</div>
-      <div class="nl">Languages</div>
-    </div>
-    <div class="num-cell">
-      <div class="n">₹0</div>
-      <div class="nl">Funding taken</div>
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow fade-up">Founder &nbsp;·&nbsp; Builder &nbsp;·&nbsp; Age 17 &nbsp;·&nbsp; Rajasthan, India</p>
+  <h1 class="hero-name fade-up">Druhi<br><em>Sarupria.</em></h1>
+  <div class="hero-rule fade-up"></div>
+  <div class="hero-bottom fade-up">
+    <p class="hero-statement">
+      "The most dangerous person in any room<br>
+      is the one who doesn't need the room."
+    </p>
+    <div class="hero-meta">
+      <p>Health AI &nbsp;·&nbsp; CANary</p>
+      <p>Community &nbsp;·&nbsp; DRiSe</p>
+      <p>Research &nbsp;·&nbsp; Dhara Tattva</p>
+      <p>₹0 funding &nbsp;·&nbsp; 10,000+ lives</p>
     </div>
   </div>
+</section>
 
-  <div class="cards">
-    <div class="card">
-      <div class="card-label">Venture 01 &nbsp;·&nbsp; Health AI</div>
-      <div class="card-title">CANary</div>
-      <div class="card-body"><strong>Built solo. Zero team. Zero funding.</strong> AI-powered early cancer screening platform — from concept to deployment, alone.</div>
-      <div class="card-proof">10,000+ users · Peer-reviewed publication in progress</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Venture 02 &nbsp;·&nbsp; Community</div>
-      <div class="card-title">DRiSe Foundation</div>
-      <div class="card-body">Free education for underprivileged women and children with AI literacy. <strong>Running it as a minor. Doing it anyway.</strong></div>
-      <div class="card-proof">2,000+ rural women reached</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Venture 03 &nbsp;·&nbsp; Circular Economy</div>
-      <div class="card-title">Dhara Tattva</div>
-      <div class="card-body">Converts organic waste into incense sticks and manure. <strong>IIT Delhi-verified research.</strong> Presented at National Science Congress nationals.</div>
-      <div class="card-proof">Filed before most people her age have a hobby</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Next &nbsp;·&nbsp; Commerce</div>
-      <div class="card-title">Offline → Online</div>
-      <div class="card-body">Digital storefronts for kirana stores and local businesses. <strong>Distribution before product.</strong> WhatsApp ordering first, tech second.</div>
-      <div class="card-proof">The last mile of Indian commerce is still untouched</div>
-    </div>
+<!-- NUMBERS -->
+<div class="numbers-strip">
+  <div class="num-block">
+    <div class="n">10K+</div>
+    <div class="nl">CANary users</div>
   </div>
-
-  <div class="proof-section">
-    <div class="section-label">Recognition & proof</div>
-    <div class="pills">
-      <div class="pill"><strong>TiE</strong> &nbsp;Startup Pitch Winner — CEO role, Best Team</div>
-      <div class="pill"><strong>NASA</strong> &nbsp;Confirmed asteroid discovery</div>
-      <div class="pill"><strong>IIT Delhi</strong> &nbsp;Verified research paper</div>
-      <div class="pill"><strong>Published</strong> &nbsp;Poetry collection</div>
-      <div class="pill"><strong>National</strong> &nbsp;Science Congress finalist</div>
-      <div class="pill"><strong>Press</strong> &nbsp;Paintings in major Indian newspapers</div>
-      <div class="pill"><strong>Preparing</strong> &nbsp;JEE — simultaneously</div>
-    </div>
+  <div class="num-block">
+    <div class="n">2K+</div>
+    <div class="nl">Women & children reached</div>
   </div>
-
-  <div class="bottom">
-    <div class="the-ask">
-      <div class="ask-label">Why you're reading this</div>
-      <p>People like this come along once. She's 17. The question isn't whether she'll build something significant — it's whether you'll be in the room when she does.</p>
-    </div>
-    <div class="contact">
-      <div class="c-label">Reach her</div>
-      <a href="mailto:druhisaruparia135@gmail.com">druhisaruparia135@gmail.com</a>
-      <a href="https://www.linkedin.com/in/druhi-sarupria-579635302/" target="_blank">linkedin.com/in/druhi-sarupria</a>
-      <a href="https://lovable.dev/projects/e2396ef2-9d97-4175-be85-e016f63bedc1" target="_blank">CANary — View Live</a>
-    </div>
+  <div class="num-block">
+    <div class="n">55T+</div>
+    <div class="nl">Organic waste managed</div>
   </div>
-
+  <div class="num-block">
+    <div class="n">₹0</div>
+    <div class="nl">External funding</div>
+  </div>
 </div>
+
+<!-- WORK -->
+<section class="section" id="work">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2 class="section-title">The Work</h2>
+  </div>
+
+  <div class="work-list">
+
+    <div class="work-item">
+      <span class="work-num">001</span>
+      <div>
+        <div class="work-title">CANary</div>
+        <div class="work-tag">Health AI &nbsp;·&nbsp; 2023 – Present</div>
+      </div>
+      <div>
+        <p class="work-body">
+          AI-powered early cancer screening platform. <strong>Built entirely alone — no team, no funding, no institution.</strong> Every line of code, every design decision, every user acquired through her own effort.
+        </p>
+        <p class="work-proof">10,000+ users &nbsp;·&nbsp; Peer-reviewed publication in progress</p>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <span class="work-num">002</span>
+      <div>
+        <div class="work-title">DRiSe Foundation</div>
+        <div class="work-tag">Education &nbsp;·&nbsp; 2022 – Present</div>
+      </div>
+      <div>
+        <p class="work-body">
+          Free education for underprivileged women, girls, and rural children. Teaches new-generation subjects — computers, AI, digital literacy — alongside traditional ones. <strong>All curriculum books written by Druhi herself.</strong>
+        </p>
+        <p class="work-proof">2,000+ lives reached &nbsp;·&nbsp; Self-authored textbooks</p>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <span class="work-num">003</span>
+      <div>
+        <div class="work-title">Dhara Tattva</div>
+        <div class="work-tag">Circular Economy &nbsp;·&nbsp; 2022 – Present</div>
+      </div>
+      <div>
+        <p class="work-body">
+          Converts organic waste into incense sticks, incense cones, manure, and recycled paper. <strong>55+ tons of waste managed.</strong> Research verified by IIT Delhi. Presented at National Children's Science Congress — national level.
+        </p>
+        <p class="work-proof">55+ tons managed &nbsp;·&nbsp; 4 products &nbsp;·&nbsp; IIT Delhi verified</p>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <span class="work-num">004</span>
+      <div>
+        <div class="work-title">Physics Books</div>
+        <div class="work-tag">Publishing &nbsp;·&nbsp; Independent</div>
+      </div>
+      <div>
+        <p class="work-body">
+          Two independently authored physics books that received praise from <strong>H.C. Verma, David Tong, and Leonard Susskind</strong> — three of the most respected physics educators and theorists alive.
+        </p>
+        <p class="work-proof">Praised by the people who wrote the textbooks everyone else studies</p>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <span class="work-num">005</span>
+      <div>
+        <div class="work-title">Offline → Online</div>
+        <div class="work-tag">Commerce &nbsp;·&nbsp; 2026</div>
+      </div>
+      <div>
+        <p class="work-body">
+          Building a digital layer for kirana stores and local businesses — the ones with loyal customers and zero online presence. <strong>Distribution before product.</strong> WhatsApp ordering first, infrastructure second.
+        </p>
+        <p class="work-proof">The last mile of Indian commerce is still untouched</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PULL QUOTE -->
+<div class="pull-quote">
+  <blockquote>
+    "People like this come along <em>once.</em> The question isn't whether she'll build something significant — it's whether you'll be in the room <em>when she does.</em>"
+  </blockquote>
+  <p class="quote-attr">On Druhi Sarupria &nbsp;·&nbsp; Age 17 &nbsp;·&nbsp; Rajasthan, India</p>
+</div>
+
+
+<!-- PHYSICIST QUOTES -->
+<section class="section" id="voices">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2 class="section-title">What they said</h2>
+  </div>
+
+  <div class="quotes-list">
+
+    <div class="quote-card">
+      <div class="quote-person">
+        <div class="quote-name">H.C. Verma</div>
+        <div class="quote-role">Ex-Professor of Physics, IIT Kanpur · Author of Concepts of Physics</div>
+      </div>
+      <blockquote class="quote-text">
+        "Great. Truly impressed. Coaching is not meant for curious minds and deep thinkers. It is as natural as the laws of Physics that you don't score there and don't enjoy. You learn what you think is meaningful from your school and coaching and you will finally be a good researcher and teacher."
+      </blockquote>
+    </div>
+
+    <div class="quote-card">
+      <div class="quote-person">
+        <div class="quote-name">David Tong</div>
+        <div class="quote-role">Professor of Theoretical Physics, University of Cambridge</div>
+      </div>
+      <blockquote class="quote-text">
+        "Nice — I like the idea of having a list of unsolved questions. Some of your questions have good answers, others don't, at least not yet. As you go through your physics education, you should learn more. Maybe you'll manage to answer some of the unknown ones yourself."
+      </blockquote>
+    </div>
+
+    <div class="quote-card">
+      <div class="quote-person">
+        <div class="quote-name">Leonard Susskind</div>
+        <div class="quote-role">Professor of Theoretical Physics, Stanford University · Father of String Theory</div>
+      </div>
+      <blockquote class="quote-text">
+        "Good job. Now it's time to go and solve the puzzles and paradoxes. Good luck to you and best wishes."
+      </blockquote>
+    </div>
+
+  </div>
+</section>
+
+<!-- RECOGNITION -->
+<section class="section" id="recognition">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Recognition</h2>
+  </div>
+
+  <div class="rec-grid">
+    <div class="rec-item">
+      <div class="rec-org">TiE</div>
+      <div class="rec-desc">Startup Pitch Competition Winner — CEO role, Best Team Award</div>
+    </div>
+    <div class="rec-item">
+      <div class="rec-org">NASA-affiliated Program</div>
+      <div class="rec-desc">Confirmed asteroid discovery</div>
+    </div>
+    <div class="rec-item">
+      <div class="rec-org">IIT Delhi</div>
+      <div class="rec-desc">Research paper verification — organic waste management</div>
+    </div>
+    <div class="rec-item">
+      <div class="rec-org">H.C. Verma · David Tong · Leonard Susskind</div>
+      <div class="rec-desc">Physics books praised by three of the world's most respected physicists</div>
+    </div>
+    <div class="rec-item">
+      <div class="rec-org">National Children's Science Congress</div>
+      <div class="rec-desc">National-level presenter — Dhara Tattva research</div>
+    </div>
+    <div class="rec-item">
+      <div class="rec-org">Indian Press</div>
+      <div class="rec-desc">Paintings and work featured in major Indian newspapers</div>
+    </div>
+    <div class="rec-item">
+      <div class="rec-org">12 Languages</div>
+      <div class="rec-desc">Functional to native proficiency across twelve languages</div>
+    </div>
+    <div class="rec-item">
+      <div class="rec-org">Currently</div>
+      <div class="rec-desc">Preparing for JEE — simultaneously running three ventures</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-left">
+    <h2>Let's be in each other's orbit.</h2>
+    <p>If you're building something that matters, or you think there's a reason we should know each other — reach out. The best conversations start with a simple hello.</p>
+  </div>
+  <div class="contact-links">
+    <a class="contact-link" href="mailto:druhisaruparia135@gmail.com">
+      <span class="cl-label">Email</span>
+      <span class="cl-val">druhisaruparia135@gmail.com</span>
+      <span class="cl-arrow">→</span>
+    </a>
+    <a class="contact-link" href="https://www.linkedin.com/in/druhi-sarupria-579635302/" target="_blank">
+      <span class="cl-label">LinkedIn</span>
+      <span class="cl-val">druhi-sarupria</span>
+      <span class="cl-arrow">→</span>
+    </a>
+    <a class="contact-link" href="https://canary-scan-ai.vercel.app" target="_blank">
+      <span class="cl-label">CANary</span>
+      <span class="cl-val">View Live Platform</span>
+      <span class="cl-arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Druhi Sarupria &nbsp;·&nbsp; Rajasthan, India</p>
+  <p>Building things that matter &nbsp;·&nbsp; 2026</p>
+</footer>
+
 </body>
 </html>
