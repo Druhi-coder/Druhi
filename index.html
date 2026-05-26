@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Druhi Sarupria | Researcher, Builder & Writer</title>
+
+<meta name="description" content="Druhi Sarupria — Researcher, Builder & Writer working across AI, healthcare, education, sustainability, and future technologies.">
+<meta name="keywords" content="Druhi Sarupria, CANary, AiR, DRiSe Foundation, Dhara Tattva">
+<meta name="author" content="Druhi Sarupria">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--bg:#050816;
+--bg2:#111936;
+--text:#f8fafc;
+--muted:#94a3b8;
+--card:rgba(15,23,42,.6);
+--border:rgba(255,255,255,.08);
+}
+
+body.light{
+--bg:#ebe2d4;
+--bg2:#d8cdbf;
+--text:#1e293b;
+--muted:#475569;
+--card:rgba(255,255,255,.65);
+--border:rgba(0,0,0,.08);
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:
+radial-gradient(circle at top left,#182454 0%,transparent 30%),
+linear-gradient(135deg,var(--bg),var(--bg2));
+color:var(--text);
+overflow-x:hidden;
+transition:background .35s ease,color .35s ease;
+}
+
+.container{
+width:min(1300px,92%);
+margin:auto;
+}
+
+.hero{
+display:grid;
+grid-template-columns:1fr 1.1fr;
+gap:6rem;
+min-height:100vh;
+padding:7rem 0;
+}
+
+.left{
+position:sticky;
+top:0;
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+.name{
+font-size:clamp(4rem,10vw,8rem);
+line-height:.9;
+font-weight:800;
+letter-spacing:-4px;
+}
+
+.role{
+margin-top:1.5rem;
+font-size:2rem;
+font-weight:600;
+}
+
+.desc{
+margin-top:2rem;
+max-width:520px;
+font-size:1.2rem;
+line-height:1.8;
+color:var(--muted);
+}
+
+.toggle{
+position:fixed;
+top:2rem;
+right:2rem;
+z-index:1000;
+border:none;
+padding:1rem 1.4rem;
+border-radius:18px;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(10px);
+color:var(--text);
+cursor:pointer;
+}
+
+.nav{
+margin-top:4rem;
+display:flex;
+flex-direction:column;
+gap:1rem;
+}
+
+.nav a{
+text-decoration:none;
+color:var(--text);
+padding:1rem 1.4rem;
+border-radius:18px;
+border:1px solid var(--border);
+background:rgba(255,255,255,.03);
+width:fit-content;
+transition:.3s ease;
+}
+
+.nav a:hover{
+transform:translateX(10px);
+background:rgba(99,102,241,.15);
+}
+
+.socials{
+margin-top:3rem;
+display:flex;
+gap:1rem;
+flex-wrap:wrap;
+}
+
+.socials a{
+text-decoration:none;
+color:var(--muted);
+}
+
+.right{
+padding-top:4rem;
+}
+
+section{
+margin-bottom:8rem;
+}
+
+.label{
+font-size:.9rem;
+letter-spacing:5px;
+margin-bottom:2rem;
+color:var(--muted);
+}
+
+.about{
+font-size:1.45rem;
+line-height:1.9;
+}
+
+.cards{
+display:grid;
+gap:2rem;
+}
+
+.card{
+background:var(--card);
+border:1px solid var(--border);
+border-radius:28px;
+padding:2.5rem;
+backdrop-filter:blur(12px);
+transition:.35s ease;
+}
+
+.card:hover{
+transform:translateY(-8px);
+background:rgba(99,102,241,.12);
+}
+
+.card h3{
+font-size:2rem;
+margin-bottom:1rem;
+}
+
+.card p{
+line-height:1.8;
+color:var(--muted);
+}
+
+.books{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:2rem;
+}
+
+.book{
+background:var(--card);
+border:1px solid var(--border);
+border-radius:28px;
+overflow:hidden;
+transition:.35s ease;
+}
+
+.book:hover{
+transform:translateY(-10px) scale(1.02);
+}
+
+.book img{
+width:100%;
+height:360px;
+object-fit:cover;
+display:block;
+}
+
+.book-content{
+padding:1.5rem;
+}
+
+.book-content h4{
+font-size:1.5rem;
+margin-bottom:1rem;
+}
+
+.book-content p{
+color:var(--muted);
+line-height:1.7;
+}
+
+.impact-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:1.5rem;
+}
+
+.impact-box{
+background:var(--card);
+border:1px solid var(--border);
+padding:2rem;
+border-radius:25px;
+}
+
+.impact-number{
+font-size:3rem;
+font-weight:800;
+}
+
+.impact-label{
+margin-top:.8rem;
+color:var(--muted);
+line-height:1.7;
+}
+
+.contact a{
+color:var(--text);
+text-decoration:none;
+font-size:1.1rem;
+}
+
+@media(max-width:1000px){
+
+.hero{
+grid-template-columns:1fr;
+}
+
+.left{
+position:relative;
+height:auto;
+}
+
+.name{
+font-size:5rem;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<button class="toggle" onclick="toggleTheme()">
+Toggle
+</button>
+
+<div class="container">
+
+<div class="hero">
+
+<div class="left">
+
+<h1 class="name">
+Druhi<br>Sarupria
+</h1>
+
+<div class="role">
+Researcher, Builder & Writer
+</div>
+
+<p class="desc">
+Building systems across AI, healthcare, education, sustainability, and future technologies.
+</p>
+
+<div class="nav">
+<a href="#about">About</a>
+<a href="#work">Work</a>
+<a href="#publications">Publications</a>
+<a href="#impact">Impact</a>
+<a href="#contact">Contact</a>
+</div>
+
+<div class="socials">
+<a href="https://github.com/Druhi-coder" target="_blank">GitHub</a>
+<a href="https://www.linkedin.com/in/druhi-sarupria-579635302/" target="_blank">LinkedIn</a>
+<a href="https://medium.com/@druhisaruparia135" target="_blank">Medium</a>
+<a href="https://buzzedx.blogspot.com" target="_blank">Blog</a>
+</div>
+
+</div>
+
+<div class="right">
+
+<section id="about">
+<div class="label">ABOUT</div>
+
+<p class="about">
+I work at the intersection of AI, healthcare, sustainability, education, research, and systems design.
+<br><br>
+My current focus includes CANary, AiR, DRiSe Foundation, Dhara Tattva, and long-term research exploring accessible technology and intelligent systems.
+</p>
+</section>
+
+<section id="work">
+<div class="label">SELECTED WORK</div>
+
+<div class="cards">
+
+<a href="https://canary-scan-ai.vercel.app" target="_blank" style="text-decoration:none;color:inherit;">
+<div class="card">
+<h3>CANary</h3>
+<p>
+AI-driven healthcare research focused on accessible early-stage cancer detection systems.
+</p>
+</div>
+</a>
+
+<a href="https://air-gamma-gz3wabw.gamma.site" target="_blank" style="text-decoration:none;color:inherit;">
+<div class="card">
+<h3>AiR</h3>
+<p>
+Wearable AI ecosystem exploring real-time assistance, accessibility, translation, and future operating systems.
+</p>
+</div>
+</a>
+
+<a href="https://drisefoundation.mystrikingly.com" target="_blank" style="text-decoration:none;color:inherit;">
+<div class="card">
+<h3>DRiSe Foundation</h3>
+<p>
+Educational and social impact initiative focused on literacy and empowerment for underprivileged women and children.
+</p>
+</div>
+</a>
+
+<a href="https://impartial-banana-zhm6w9.mystrikingly.com" target="_blank" style="text-decoration:none;color:inherit;">
+<div class="card">
+<h3>Dhara Tattva</h3>
+<p>
+Sustainability-focused initiative centered around waste management and environmental systems.
+</p>
+</div>
+</a>
+
+</div>
+</section>
+
+<section id="publications">
+<div class="label">PUBLICATIONS</div>
+
+<div class="books">
+
+<a href="https://www.amazon.in/Unsolved-Physics-Druhi-Sarupria-ebook/dp/B0FVTMJX7W" target="_blank" style="text-decoration:none;color:inherit;">
+<div class="book">
+<img src="unsolved.jpg" alt="Unsolved Physics">
+<div class="book-content">
+<h4>Unsolved Physics Edition</h4>
+<p>Questions that refuse to be answered.</p>
+</div>
+</div>
+</a>
+
+<a href="https://www.amazon.in/Unsolved-Physics-Simplified-Scientific-Glossary-ebook/dp/B0G1HRS6ZM" target="_blank" style="text-decoration:none;color:inherit;">
+<div class="book">
+<img src="glossary.jpg" alt="Scientific Glossary">
+<div class="book-content">
+<h4>Simplified Scientific Glossary</h4>
+<p>Key concepts. Clear definitions. Curious minds.</p>
+</div>
+</div>
+</a>
+
+<a href="https://www.amazon.in/Almost-Left-Unsaid-Poems-Hearts-ebook/dp/B0FMSTMJRK/" target="_blank" style="text-decoration:none;color:inherit;">
+<div class="book">
+<img src="almost-left-unsaid.png" alt="Almost Left Unsaid">
+<div class="book-content">
+<h4>Almost, Left Unsaid</h4>
+<p>Poetry and reflections for quiet hearts.</p>
+</div>
+</div>
+</a>
+
+</div>
+
+</section>
+
+<section id="impact">
+<div class="label">IMPACT</div>
+
+<div class="impact-grid">
+
+<div class="impact-box">
+<div class="impact-number">5K+</div>
+<div class="impact-label">
+Women taught through educational initiatives.
+</div>
+</div>
+
+<div class="impact-box">
+<div class="impact-number">55+</div>
+<div class="impact-label">
+Tons of waste managed through sustainability projects.
+</div>
+</div>
+
+<div class="impact-box">
+<div class="impact-number">10K+</div>
+<div class="impact-label">
+People reached through healthcare and awareness initiatives.
+</div>
+</div>
+
+</div>
+</section>
+
+<section id="contact" class="contact">
+<div class="label">CONTACT</div>
+
+<p class="about">
+Open to collaborations, research, healthcare innovation, sustainability systems, and future technologies.
+</p>
+
+<p style="margin-top:2rem;">
+<a href="mailto:druhisaruparia135@gmail.com">
+druhisaruparia135@gmail.com
+</a>
+</p>
+
+</section>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function toggleTheme(){
+document.body.classList.toggle('light');
+}
+
+</script>
+
+</body>
+</html>
