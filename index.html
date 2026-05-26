@@ -1,347 +1,346 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="description" content="Druhi Sarupria — Researcher, Builder & Writer exploring AI, healthcare, education, and future technologies."/>
-
-<meta name="keywords" content="Druhi Sarupria, AI researcher, CANary, AiR, healthcare AI, systems design"/>
-
-<meta name="author" content="Druhi Sarupria"/>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <title>Druhi Sarupria</title>
+
+<meta
+name="description"
+content="Druhi Sarupria — Researcher, Builder & Writer exploring AI, healthcare, education, scientific research, and future technologies."
+/>
+
+<meta
+name="keywords"
+content="Druhi Sarupria, CANary, AiR, AI researcher, healthcare AI, systems design, founder"
+/>
+
+<meta name="author" content="Druhi Sarupria" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-<script src="https://cdn.tailwindcss.com"></script>
-
 <style>
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  scroll-behavior:smooth;
+:root{
+--bg:#020617;
+--bg2:#08103a;
+--card:#0c1336;
+--text:#f8fafc;
+--muted:#94a3b8;
+--border:rgba(255,255,255,.08);
+--glow:rgba(59,130,246,.18);
+--accent:#7dd3fc;
 }
 
-:root{
-  --dark-1:#070b1d;
-  --dark-2:#0b1230;
-  --dark-3:#09061f;
+.light{
+--bg:#ebe4d8;
+--bg2:#ddd3c2;
+--card:#f5efe4;
+--text:#2b2b2b;
+--muted:#625f5a;
+--border:rgba(0,0,0,.08);
+--glow:rgba(120,119,198,.12);
+--accent:#5b6ee1;
+}
 
-  --light:#e8dfd1;
-
-  --text-dark:#f5f5f4;
-  --text-light:#2d2926;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
 }
 
 body{
-  font-family:'Inter',sans-serif;
-
-  background:
-  linear-gradient(
-  180deg,
-  var(--dark-1) 0%,
-  var(--dark-2) 45%,
-  var(--dark-3) 100%
-  );
-
-  color:var(--text-dark);
-
-  overflow-x:hidden;
-
-  transition:
-  background 0.35s ease,
-  color 0.35s ease;
-
-  cursor:none;
+font-family:'Inter',sans-serif;
+background:
+radial-gradient(circle at top left,var(--bg2),transparent 40%),
+radial-gradient(circle at bottom right,#0f172a,transparent 30%),
+var(--bg);
+color:var(--text);
+transition:.5s ease;
+overflow-x:hidden;
 }
 
-body.light{
-  background:var(--light);
-  color:var(--text-light);
+body::before{
+content:'';
+position:fixed;
+inset:0;
+pointer-events:none;
+background:
+radial-gradient(circle 120px at var(--x,50%) var(--y,50%), rgba(255,255,255,.08), transparent 70%);
+z-index:0;
+transition:.08s linear;
 }
 
-body.light h1,
-body.light h2,
-body.light h3,
-body.light p,
-body.light a,
-body.light div{
-  color:rgba(40,35,30,0.92);
+.container{
+width:min(1400px,92%);
+margin:auto;
+position:relative;
+z-index:2;
 }
 
-body.light .ambient{
-  opacity:0.45;
+.hero{
+min-height:100vh;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:100px;
+padding:80px 0;
 }
 
-body.light .orb{
-  opacity:0.08;
+.left{
+position:sticky;
+top:80px;
+height:max-content;
 }
 
-@media(max-width:1024px){
-
-  body{
-    cursor:auto;
-  }
-
-  .cursor{
-    display:none;
-  }
-
+.name{
+font-size:clamp(4rem,9vw,8rem);
+font-weight:800;
+line-height:.9;
+letter-spacing:-5px;
 }
 
-/* CURSOR */
-
-.cursor{
-  width:16px;
-  height:16px;
-
-  border-radius:999px;
-
-  position:fixed;
-
-  top:0;
-  left:0;
-
-  background:
-  rgba(140,160,255,0.35);
-
-  pointer-events:none;
-
-  z-index:99999;
-
-  mix-blend-mode:screen;
+.role{
+font-size:2rem;
+margin-top:24px;
+opacity:.9;
 }
 
-.cursor.hovered{
-  width:42px;
-  height:42px;
-
-  background:
-  rgba(140,160,255,0.12);
+.bio{
+margin-top:40px;
+max-width:500px;
+font-size:1.25rem;
+line-height:1.8;
+color:var(--muted);
 }
 
-/* BACKGROUND */
-
-.ambient{
-  position:fixed;
-  inset:0;
-
-  overflow:hidden;
-
-  pointer-events:none;
-
-  z-index:-1;
+.nav{
+margin-top:60px;
+display:flex;
+flex-direction:column;
+gap:18px;
 }
 
-.orb{
-  position:absolute;
-
-  border-radius:999px;
-
-  filter:blur(90px);
-
-  opacity:0.12;
+.nav a{
+width:max-content;
+padding:16px 24px;
+border-radius:18px;
+text-decoration:none;
+color:var(--text);
+background:rgba(255,255,255,.03);
+border:1px solid var(--border);
+backdrop-filter:blur(10px);
+transition:.35s ease;
+font-weight:600;
 }
 
-.orb1{
-  width:450px;
-  height:450px;
-
-  background:#5b63ff;
-
-  top:-120px;
-  left:-120px;
+.nav a:hover{
+transform:translateX(10px);
+background:var(--glow);
+box-shadow:0 10px 40px rgba(0,0,0,.15);
 }
 
-.orb2{
-  width:500px;
-  height:500px;
-
-  background:#6d5dfc;
-
-  right:-120px;
-  bottom:-160px;
+.socials{
+display:flex;
+gap:18px;
+margin-top:50px;
+flex-wrap:wrap;
 }
 
-/* GLASS */
-
-.glass{
-  background:
-  rgba(255,255,255,0.04);
-
-  border:
-  1px solid rgba(255,255,255,0.06);
-
-  backdrop-filter:blur(10px);
-
-  -webkit-backdrop-filter:blur(10px);
+.socials a{
+text-decoration:none;
+color:var(--muted);
+transition:.3s;
+font-weight:500;
 }
 
-body.light .glass{
-  background:
-  rgba(255,255,255,0.55);
-
-  border:
-  1px solid rgba(0,0,0,0.06);
+.socials a:hover{
+color:var(--text);
 }
 
-/* HERO */
-
-.hero-name{
-  font-size:clamp(4rem,8vw,7rem);
-
-  line-height:0.9;
-
-  font-weight:800;
-
-  letter-spacing:-0.05em;
-
-  color:rgba(255,255,255,0.95);
-
-  text-shadow:
-  0 0 35px rgba(150,160,255,0.12);
+.toggle{
+margin-top:30px;
+padding:14px 22px;
+border-radius:999px;
+border:1px solid var(--border);
+background:rgba(255,255,255,.04);
+backdrop-filter:blur(10px);
+color:var(--text);
+cursor:pointer;
+transition:.3s;
+font-weight:600;
 }
 
-.section-title{
-  text-transform:uppercase;
-
-  letter-spacing:0.22em;
-
-  font-size:0.82rem;
-
-  opacity:0.6;
+.toggle:hover{
+transform:translateY(-2px);
+background:var(--glow);
 }
 
-/* BUTTON */
-
-.toggle-btn{
-  border-radius:999px;
-
-  padding:12px 24px;
-
-  transition:
-  transform 0.3s ease;
+.right section{
+margin-bottom:140px;
 }
 
-.toggle-btn:hover{
-  transform:
-  translateY(-2px);
+.label{
+font-size:.9rem;
+letter-spacing:5px;
+text-transform:uppercase;
+color:var(--muted);
+margin-bottom:30px;
 }
 
-/* PERFORMANCE */
-
-.project-card,
-.book-card,
-.nav-box,
-.impact-card,
-.book-image,
-.book-overlay{
-
-  will-change:
-  transform,
-  opacity;
-
-  transform:
-  translateZ(0);
-
-  backface-visibility:hidden;
+.content{
+font-size:1.4rem;
+line-height:2;
+color:rgba(255,255,255,.88);
 }
 
-/* HOVER */
-
-.project-card,
-.book-card,
-.nav-box,
-.impact-card{
-
-  transition:
-  transform 420ms cubic-bezier(0.22,1,0.36,1),
-  border-color 420ms ease,
-  background 420ms ease;
+.light .content{
+color:#3d3d3d;
 }
 
-.project-card:hover,
-.book-card:hover,
-.impact-card:hover{
-
-  transform:
-  translateY(-6px);
-
-  border-color:
-  rgba(160,170,255,0.16);
+.card{
+padding:40px;
+border-radius:32px;
+background:rgba(255,255,255,.03);
+border:1px solid var(--border);
+backdrop-filter:blur(14px);
+margin-bottom:28px;
+transition:.4s ease;
 }
 
-.nav-box:hover{
-
-  transform:
-  translateX(4px);
-
-  background:
-  rgba(255,255,255,0.06);
+.card:hover{
+transform:translateY(-8px);
+background:var(--glow);
 }
 
-/* BOOK */
-
-.book-image{
-
-  transition:
-  transform 700ms cubic-bezier(0.22,1,0.36,1),
-  filter 700ms ease;
+.card h3{
+font-size:2rem;
+margin-bottom:18px;
 }
 
-.book-card:hover .book-image{
-
-  transform:
-  scale(1.025);
-
-  filter:
-  brightness(1.02);
+.card p{
+font-size:1.1rem;
+line-height:1.9;
+color:var(--muted);
 }
 
-.book-overlay{
-
-  position:absolute;
-  inset:0;
-
-  background:
-  linear-gradient(
-  to top,
-  rgba(0,0,0,0.25),
-  transparent
-  );
-
-  opacity:0;
-
-  transition:
-  opacity 500ms ease;
+.books{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:28px;
+margin-top:40px;
 }
 
-.book-card:hover .book-overlay{
-  opacity:1;
+.book{
+overflow:hidden;
+border-radius:28px;
+background:rgba(255,255,255,.03);
+border:1px solid var(--border);
+transition:.45s ease;
 }
 
-/* FADE */
-
-.fade-up{
-  opacity:0;
-
-  transform:
-  translateY(40px);
-
-  transition:
-  0.9s cubic-bezier(.22,1,.36,1);
+.book:hover{
+transform:translateY(-10px) scale(1.02);
+box-shadow:0 20px 60px rgba(0,0,0,.25);
 }
 
-.fade-up.visible{
-  opacity:1;
+.book img{
+width:100%;
+height:420px;
+object-fit:cover;
+display:block;
+}
 
-  transform:
-  translateY(0);
+.book-content{
+padding:24px;
+}
+
+.book-content h4{
+font-size:1.7rem;
+margin-bottom:12px;
+}
+
+.book-content p{
+color:var(--muted);
+line-height:1.8;
+}
+
+.impact{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:24px;
+margin-top:30px;
+}
+
+.impact-box{
+padding:35px;
+border-radius:28px;
+background:rgba(255,255,255,.03);
+border:1px solid var(--border);
+transition:.35s;
+}
+
+.impact-box:hover{
+transform:translateY(-6px);
+background:var(--glow);
+}
+
+.impact-box h2{
+font-size:3rem;
+margin-bottom:10px;
+}
+
+.impact-box p{
+color:var(--muted);
+line-height:1.7;
+}
+
+.contact-links{
+display:flex;
+flex-direction:column;
+gap:20px;
+}
+
+.contact-links a{
+text-decoration:none;
+color:var(--text);
+font-size:1.15rem;
+transition:.3s;
+}
+
+.contact-links a:hover{
+transform:translateX(8px);
+color:var(--accent);
+}
+
+@media(max-width:1100px){
+
+.hero{
+grid-template-columns:1fr;
+gap:80px;
+}
+
+.left{
+position:relative;
+top:0;
+}
+
+.books{
+grid-template-columns:1fr;
+}
+
+.impact{
+grid-template-columns:1fr;
+}
+
+.name{
+font-size:5rem;
+}
+
 }
 
 </style>
@@ -349,504 +348,215 @@ body.light .glass{
 
 <body>
 
-<div class="cursor"></div>
+<div class="container">
 
-<div class="ambient">
-  <div class="orb orb1"></div>
-  <div class="orb orb2"></div>
-</div>
+<div class="hero">
 
-<main class="max-w-7xl mx-auto px-6 lg:px-10 py-12 lg:py-24 relative z-10">
+<div class="left">
 
-<div class="grid lg:grid-cols-[420px_1fr] gap-24">
-
-<!-- SIDEBAR -->
-<aside class="lg:sticky lg:top-0 lg:h-screen flex flex-col justify-between">
-
-<div>
-
-<div>
-
-<h1 class="hero-name">
-Druhi<br/>
+<h1 class="name">
+Druhi<br>
 Sarupria
 </h1>
 
-<h2 class="mt-6 text-2xl opacity-80 font-medium">
+<h2 class="role">
 Researcher, Builder & Writer
 </h2>
 
-<button
-id="toggleTheme"
-class="toggle-btn glass text-sm mt-8">
-Toggle
+<button class="toggle" id="themeToggle">
+Toggle Theme
 </button>
 
-</div>
-
-<p class="mt-10 leading-9 opacity-70 max-w-sm text-[17px]">
-Building systems across AI, healthcare, education, and future technologies.
+<p class="bio">
+Building systems across AI, healthcare, education, scientific research, and future technologies.
 </p>
 
-<div class="mt-14 flex flex-col gap-4 text-[15px]">
+<div class="nav">
+<a href="#about">About</a>
+<a href="#work">Work</a>
+<a href="#publications">Publications</a>
+<a href="#impact">Impact</a>
+<a href="#contact">Contact</a>
+</div>
 
-<a href="#about"
-class="glass nav-box rounded-2xl px-5 py-4 w-fit">
-About
-</a>
+<div class="socials">
 
-<a href="#work"
-class="glass nav-box rounded-2xl px-5 py-4 w-fit">
-Work
-</a>
+<a href="https://github.com/Druhi-coder" target="_blank">GitHub</a>
 
-<a href="#publications"
-class="glass nav-box rounded-2xl px-5 py-4 w-fit">
-Publications
-</a>
+<a href="https://www.linkedin.com/in/druhi-sarupria-579635302/" target="_blank">LinkedIn</a>
 
-<a href="#impact"
-class="glass nav-box rounded-2xl px-5 py-4 w-fit">
-Impact
-</a>
+<a href="https://medium.com/@druhisaruparia135" target="_blank">Medium</a>
 
-<a href="#contact"
-class="glass nav-box rounded-2xl px-5 py-4 w-fit">
-Contact
-</a>
+<a href="https://buzzedx.blogspot.com" target="_blank">Blog</a>
 
 </div>
 
 </div>
 
-<div class="flex gap-5 text-sm opacity-70 mt-12 lg:mt-0">
+<div class="right">
 
-<a
-href="https://github.com/Druhi-coder"
-target="_blank">
-GitHub
-</a>
+<section id="about">
 
-<a
-href="https://www.linkedin.com/in/druhi-sarupria-579635302/"
-target="_blank">
-LinkedIn
-</a>
+<p class="label">About</p>
 
-<a
-href="mailto:druhisaruparia135@gmail.com">
-Email
-</a>
-
-</div>
-
-</aside>
-
-<!-- CONTENT -->
-<section class="space-y-32 pb-24">
-
-<section id="about" class="fade-up">
-
-<p class="section-title mb-8">
-About
-</p>
-
-<div class="space-y-7 text-[18px] leading-9 opacity-75 max-w-3xl">
-
-<p>
+<div class="content">
 I work at the intersection of AI, healthcare, education, scientific research, and systems design.
-</p>
 
-<p>
+<br><br>
+
 My current focus includes CANary, AiR, and long-term research exploring accessible technology and intelligent systems.
-</p>
-
 </div>
 
 </section>
 
-<section id="work" class="fade-up">
+<section id="work">
 
-<p class="section-title mb-8">
-Selected Work
-</p>
+<p class="label">Selected Work</p>
 
-<div class="space-y-7">
-
-<a
-href="https://canary-scan-ai.vercel.app"
-target="_blank"
-class="project-card glass rounded-[32px] p-9 block">
-
-<h3 class="text-3xl font-semibold">
-CANary
-</h3>
-
-<p class="mt-5 opacity-65 leading-8 max-w-2xl">
+<div class="card">
+<h3>CANary</h3>
+<p>
 AI-driven healthcare research focused on accessible early-stage cancer detection systems.
 </p>
+</div>
 
-</a>
-
-<a
-href="https://air-gamma-gz3wabw.gamma.site"
-target="_blank"
-class="project-card glass rounded-[32px] p-9 block">
-
-<h3 class="text-3xl font-semibold">
-AiR
-</h3>
-
-<p class="mt-5 opacity-65 leading-8 max-w-2xl">
-A wearable AI ecosystem exploring seamless human-device interaction, accessibility, offline intelligence, and contextual assistance systems.
+<div class="card">
+<h3>AiR</h3>
+<p>
+A futuristic wearable AI ecosystem exploring intelligent assistance, real-time translation, health monitoring, gesture controls, and seamless human-AI interaction.
 </p>
+</div>
 
-</a>
-
+<div class="card">
+<h3>DRISE Foundation</h3>
+<p>
+Educational and social impact initiatives focused on literacy, rural empowerment, and accessible learning opportunities for women and children.
+</p>
 </div>
 
 </section>
 
-<section id="publications" class="fade-up">
+<section id="publications">
 
-<p class="section-title mb-8">
-Publications
-</p>
+<p class="label">Publications</p>
 
-<div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+<div class="books">
 
-<a
-href="https://www.amazon.in/Unsolved-Physics-Druhi-Sarupria-ebook/dp/B0FVTMJX7W"
-target="_blank"
-class="book-card glass rounded-[32px] block">
+<div class="book">
+<img src="./Druhi Portfolio/unsolved.jpg">
 
-<div class="overflow-hidden relative">
-
-<img
-src="./unsolved.jpg"
-class="book-image w-full h-[520px] object-cover"
-alt="Unsolved Physics"
-/>
-
-<div class="book-overlay"></div>
-
-</div>
-
-<div class="p-7">
-
-<h3 class="text-2xl font-semibold">
-Unsolved Physics Edition
-</h3>
-
-<p class="mt-3 opacity-65 leading-7 text-sm">
+<div class="book-content">
+<h4>Unsolved Physics Edition</h4>
+<p>
 Questions that refuse to be answered.
 </p>
-
+</div>
 </div>
 
-</a>
+<div class="book">
+<img src="./Druhi Portfolio/glossary.jpg">
 
-<a
-href="https://www.amazon.in/Unsolved-Physics-Simplified-Scientific-Glossary-ebook/dp/B0G1HRS6ZM"
-target="_blank"
-class="book-card glass rounded-[32px] block">
-
-<div class="overflow-hidden relative">
-
-<img
-src="./glossary.jpg"
-class="book-image w-full h-[520px] object-cover"
-alt="Scientific Glossary"
-/>
-
-<div class="book-overlay"></div>
-
-</div>
-
-<div class="p-7">
-
-<h3 class="text-2xl font-semibold">
-Simplified Scientific Glossary
-</h3>
-
-<p class="mt-3 opacity-65 leading-7 text-sm">
+<div class="book-content">
+<h4>Simplified Scientific Glossary</h4>
+<p>
 Key concepts. Clear definitions. Curious minds.
 </p>
-
+</div>
 </div>
 
-</a>
+<div class="book">
+<img src="./Druhi Portfolio/almost-left-unsaid.png">
 
-<a
-href="https://www.amazon.in/Almost-Left-Unsaid-Poems-Hearts-ebook/dp/B0FMSTMJRK/"
-target="_blank"
-class="book-card glass rounded-[32px] block">
-
-<div class="overflow-hidden relative">
-
-<img
-src="./almost-left-unsaid.png"
-class="book-image w-full h-[520px] object-cover"
-alt="Almost Left Unsaid"
-/>
-
-<div class="book-overlay"></div>
-
-</div>
-
-<div class="p-7">
-
-<h3 class="text-2xl font-semibold">
-Almost, Left Unsaid
-</h3>
-
-<p class="mt-3 opacity-65 leading-7 text-sm">
-Poems for quiet hearts.
+<div class="book-content">
+<h4>Almost, Left Unsaid</h4>
+<p>
+Poetry and reflections for quiet hearts.
 </p>
+</div>
+</div>
 
 </div>
 
-</a>
-
+<div style="margin-top:40px; color:var(--muted); line-height:2; font-size:1.1rem;">
+Alongside these publications, I have also written and published 4 educational books designed for underprivileged women and children through DRISE Foundation initiatives.
 </div>
 
 </section>
 
-<section id="impact" class="fade-up">
+<section id="impact">
 
-<p class="section-title mb-12">
-Impact
-</p>
+<p class="label">Impact</p>
 
-<div class="grid md:grid-cols-2 gap-6">
+<div class="impact">
 
-<div class="glass rounded-[30px] p-8 impact-card">
-
-<h3 class="text-5xl font-bold">
-10K+
-</h3>
-
-<p class="mt-5 opacity-70 leading-8 text-[15px]">
-People screened through healthcare initiatives and accessibility-focused research efforts.
-</p>
-
+<div class="impact-box">
+<h2>5K+</h2>
+<p>Women taught through literacy and educational initiatives.</p>
 </div>
 
-<div class="glass rounded-[30px] p-8 impact-card">
-
-<h3 class="text-5xl font-bold">
-5K+
-</h3>
-
-<p class="mt-5 opacity-70 leading-8 text-[15px]">
-Women taught through educational and literacy-focused community initiatives.
-</p>
-
+<div class="impact-box">
+<h2>55+</h2>
+<p>Tons of waste managed through environmental and sustainability projects.</p>
 </div>
 
-<div class="glass rounded-[30px] p-8 impact-card">
-
-<h3 class="text-5xl font-bold">
-55+
-</h3>
-
-<p class="mt-5 opacity-70 leading-8 text-[15px]">
-Tons of organic waste managed through sustainability and waste-management systems.
-</p>
-
+<div class="impact-box">
+<h2>10K+</h2>
+<p>People reached through healthcare and awareness initiatives.</p>
 </div>
 
-<div class="glass rounded-[30px] p-8 impact-card">
-
-<h3 class="text-5xl font-bold">
-NASA
-</h3>
-
-<p class="mt-5 opacity-70 leading-8 text-[15px]">
-Asteroid discovery through the International Astronomical Search Collaboration.
-</p>
-
+<div class="impact-box">
+<h2>12</h2>
+<p>Languages spoken or understood across research and communication work.</p>
 </div>
 
 </div>
 
 </section>
 
-<section id="contact" class="fade-up pt-10">
+<section id="contact">
 
-<p class="section-title mb-6">
-Contact
-</p>
+<p class="label">Contact</p>
 
-<h2 class="text-4xl md:text-5xl font-bold leading-tight max-w-3xl">
-Open to research collaborations, ambitious systems problems, and meaningful conversations.
-</h2>
+<div class="contact-links">
 
-<div class="mt-10 flex flex-wrap gap-5">
-
-<a
-href="mailto:druhisaruparia135@gmail.com"
-class="glass rounded-2xl px-7 py-4">
-Email Me
+<a href="mailto:druhisaruparia135@gmail.com">
+druhisaruparia135@gmail.com
 </a>
 
-<a
-href="https://www.linkedin.com/in/druhi-sarupria-579635302/"
-target="_blank"
-class="glass rounded-2xl px-7 py-4">
-LinkedIn
+<a href="https://canary-scan-ai.vercel.app" target="_blank">
+CANary
+</a>
+
+<a href="https://air-gamma-gz3wabw.gamma.site" target="_blank">
+AiR
+</a>
+
+<a href="https://drisefoundation.mystrikingly.com" target="_blank">
+DRISE Foundation
 </a>
 
 </div>
 
 </section>
 
-</section>
+</div>
 
 </div>
 
-</main>
+</div>
 
 <script>
 
-/* THEME */
+const toggle=document.getElementById('themeToggle');
 
-const toggleBtn =
-document.getElementById('toggleTheme');
-
-toggleBtn.addEventListener('click', () => {
-  document.body.classList.toggle('light');
+toggle.addEventListener('click',()=>{
+document.body.classList.toggle('light');
 });
-
-/* NAVIGATION */
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-
-  anchor.addEventListener('click', function (e) {
-
-    e.preventDefault();
-
-    const target =
-    document.querySelector(this.getAttribute('href'));
-
-    if(target){
-
-      target.scrollIntoView({
-        behavior:'smooth',
-        block:'start'
-      });
-
-    }
-
-  });
-
-});
-
-/* CURSOR */
-
-const cursor =
-document.querySelector('.cursor');
-
-let mouseX = 0;
-let mouseY = 0;
-
-let currentX = 0;
-let currentY = 0;
 
 document.addEventListener('mousemove',(e)=>{
 
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-
-});
-
-/* BRITTANY STYLE LIGHT */
-
-const ambient =
-document.querySelector('.ambient');
-
-const light =
-document.createElement('div');
-
-light.style.position = 'fixed';
-light.style.width = '500px';
-light.style.height = '500px';
-
-light.style.borderRadius = '999px';
-
-light.style.pointerEvents = 'none';
-
-light.style.background =
-'radial-gradient(circle, rgba(120,140,255,0.12), transparent 70%)';
-
-light.style.filter = 'blur(40px)';
-
-light.style.zIndex = '-1';
-
-ambient.appendChild(light);
-
-/* CURSOR ANIMATION */
-
-function animateCursor(){
-
-  currentX += (mouseX - currentX) * 0.14;
-  currentY += (mouseY - currentY) * 0.14;
-
-  cursor.style.transform =
-  `translate(${currentX}px, ${currentY}px)`;
-
-  light.style.transform =
-  `translate(${currentX - 250}px, ${currentY - 250}px)`;
-
-  requestAnimationFrame(animateCursor);
-
-}
-
-animateCursor();
-
-/* HOVER */
-
-const hoverItems =
-document.querySelectorAll(
-'a, button, .book-card, .project-card, .nav-box'
-);
-
-hoverItems.forEach(item=>{
-
-  item.addEventListener('mouseenter',()=>{
-
-    cursor.classList.add('hovered');
-
-  });
-
-  item.addEventListener('mouseleave',()=>{
-
-    cursor.classList.remove('hovered');
-
-  });
-
-});
-
-/* FADE */
-
-const observer =
-new IntersectionObserver((entries)=>{
-
-  entries.forEach(entry=>{
-
-    if(entry.isIntersecting){
-
-      entry.target.classList.add('visible');
-
-    }
-
-  });
-
-},{threshold:0.1});
-
-document.querySelectorAll('.fade-up').forEach(el=>{
-
-  observer.observe(el);
+document.body.style.setProperty('--x',e.clientX+'px');
+document.body.style.setProperty('--y',e.clientY+'px');
 
 });
 
