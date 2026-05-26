@@ -1,567 +1,855 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Druhi Sarupria</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;700;800&display=swap" rel="stylesheet">
+<title>Druhi Sarupria</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    :root {
-      --bg: #0b0d12;
-      --card: #12151d;
-      --border: #232936;
-      --text: #f3f4f6;
-      --muted: #9ca3af;
-      --accent: #d4af6a;
-      --accent-soft: rgba(212,175,106,0.12);
-      --max-width: 1120px;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    html {
-      scroll-behavior: smooth;
-    }
+<script src="https://cdn.tailwindcss.com"></script>
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Inter', sans-serif;
-      line-height: 1.7;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
+<style>
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background-image: radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
-      background-size: 24px 24px;
-      pointer-events: none;
-      z-index: 0;
-    }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+}
 
-    .container {
-      width: 100%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 28px;
-      position: relative;
-      z-index: 1;
-    }
+:root{
+  --dark-1:#070b1d;
+  --dark-2:#0b1230;
+  --dark-3:#09061f;
 
-    header {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
+  --light:#e8dfd1;
 
-    .hero {
-      width: 100%;
-      padding: 100px 0;
-    }
+  --text-dark:#f5f5f4;
+  --text-light:#2d2926;
+}
 
-    .eyebrow {
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-size: 12px;
-      font-weight: 600;
-      margin-bottom: 22px;
-    }
+body{
+  font-family:'Inter',sans-serif;
 
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(58px, 10vw, 108px);
-      line-height: 0.95;
-      margin-bottom: 26px;
-      letter-spacing: -0.05em;
-    }
+  background:
+  linear-gradient(
+  180deg,
+  var(--dark-1) 0%,
+  var(--dark-2) 45%,
+  var(--dark-3) 100%
+  );
 
-    .hero-intro {
-      max-width: 760px;
-      font-size: clamp(18px, 2vw, 24px);
-      color: #d9dde5;
-      line-height: 1.9;
-      font-weight: 300;
-    }
+  color:var(--text-dark);
 
-    .hero-intro em {
-      color: var(--accent);
-      font-style: normal;
-      font-weight: 500;
-    }
+  overflow-x:hidden;
 
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 42px;
-    }
+  transition:
+  background 0.35s ease,
+  color 0.35s ease;
 
-    .meta-pill {
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.03);
-      padding: 12px 18px;
-      border-radius: 999px;
-      font-size: 13px;
-      color: var(--muted);
-    }
+  cursor:none;
+}
 
-    section {
-      padding: 110px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-    }
+body.light{
+  background:var(--light);
+  color:var(--text-light);
+}
 
-    .section-grid {
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      gap: 60px;
-    }
+body.light h1,
+body.light h2,
+body.light h3,
+body.light p,
+body.light a,
+body.light div{
+  color:rgba(40,35,30,0.92);
+}
 
-    .section-label {
-      color: var(--accent);
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-weight: 700;
-      position: sticky;
-      top: 40px;
-      height: fit-content;
-    }
+body.light .ambient{
+  opacity:0.45;
+}
 
-    .section-content h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(34px, 5vw, 54px);
-      line-height: 1.1;
-      margin-bottom: 24px;
-    }
+body.light .orb{
+  opacity:0.08;
+}
 
-    .section-content > p {
-      color: #cbd5e1;
-      font-size: 18px;
-      max-width: 860px;
-      margin-bottom: 26px;
-    }
+@media(max-width:1024px){
 
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      margin-top: 42px;
-    }
+  body{
+    cursor:auto;
+  }
 
-    .card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 32px;
-      transition: transform 0.3s ease, border-color 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
+  .cursor{
+    display:none;
+  }
 
-    .card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      opacity: 0.4;
-    }
+}
 
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(212,175,106,0.35);
-    }
+/* CURSOR */
 
-    .card-tag {
-      color: var(--accent);
-      font-size: 11px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-      font-weight: 700;
-    }
+.cursor{
+  width:16px;
+  height:16px;
 
-    .card h3 {
-      font-size: 28px;
-      margin-bottom: 18px;
-      line-height: 1.2;
-    }
+  border-radius:999px;
 
-    .card p {
-      color: #cbd5e1;
-      font-size: 15px;
-      margin-bottom: 18px;
-    }
+  position:fixed;
 
-    .card a {
-      color: var(--accent);
-      text-decoration: none;
-    }
+  top:0;
+  left:0;
 
-    .card a:hover {
-      text-decoration: underline;
-    }
+  background:
+  rgba(140,160,255,0.35);
 
-    .metric-box {
-      margin-top: 24px;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding-top: 18px;
-    }
+  pointer-events:none;
 
-    .metric {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 10px;
-      font-size: 14px;
-      color: var(--muted);
-    }
+  z-index:99999;
 
-    .metric strong {
-      color: var(--text);
-      font-weight: 600;
-    }
+  mix-blend-mode:screen;
+}
 
-    .thought-box {
-      background: rgba(255,255,255,0.025);
-      border: 1px solid var(--border);
-      border-radius: 30px;
-      padding: 48px;
-      margin-top: 38px;
-    }
+.cursor.hovered{
+  width:42px;
+  height:42px;
 
-    .thought-box p {
-      font-size: 19px;
-      color: #dbe2ea;
-      margin-bottom: 26px;
-      line-height: 2;
-    }
+  background:
+  rgba(140,160,255,0.12);
+}
 
-    .quote {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(28px, 4vw, 44px);
-      line-height: 1.4;
-      margin-top: 18px;
-      color: var(--accent);
-    }
+/* BACKGROUND */
 
-    .recognition-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 18px;
-      margin-top: 36px;
-    }
+.ambient{
+  position:fixed;
+  inset:0;
 
-    .recognition-item {
-      padding: 22px;
-      border-radius: 18px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.02);
-      color: #d6dce4;
-      font-size: 15px;
-    }
+  overflow:hidden;
 
-    .recognition-item strong {
-      color: var(--accent);
-      display: block;
-      margin-bottom: 8px;
-      font-size: 13px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
+  pointer-events:none;
 
-    footer {
-      padding: 90px 0 110px;
-    }
+  z-index:-1;
+}
 
-    .footer-box {
-      border: 1px solid var(--border);
-      border-radius: 32px;
-      padding: 52px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
-      text-align: center;
-    }
+.orb{
+  position:absolute;
 
-    .footer-box h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(34px, 5vw, 60px);
-      margin-bottom: 18px;
-      line-height: 1.1;
-    }
+  border-radius:999px;
 
-    .footer-box p {
-      max-width: 760px;
-      margin: 0 auto 36px;
-      color: #d1d7df;
-      font-size: 18px;
-      line-height: 1.9;
-    }
+  filter:blur(90px);
 
-    .links {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
+  opacity:0.12;
+}
 
-    .links a {
-      text-decoration: none;
-      color: var(--text);
-      border: 1px solid var(--border);
-      padding: 14px 22px;
-      border-radius: 999px;
-      transition: all 0.3s ease;
-      font-size: 14px;
-    }
+.orb1{
+  width:450px;
+  height:450px;
 
-    .links a:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      transform: translateY(-2px);
-    }
+  background:#5b63ff;
 
-    @media (max-width: 900px) {
-      .section-grid {
-        grid-template-columns: 1fr;
-        gap: 26px;
-      }
+  top:-120px;
+  left:-120px;
+}
 
-      .section-label {
-        position: static;
-      }
+.orb2{
+  width:500px;
+  height:500px;
 
-      .thought-box {
-        padding: 32px;
-      }
+  background:#6d5dfc;
 
-      .footer-box {
-        padding: 38px 28px;
-      }
-    }
-  </style>
+  right:-120px;
+  bottom:-160px;
+}
+
+/* GLASS */
+
+.glass{
+  background:
+  rgba(255,255,255,0.04);
+
+  border:
+  1px solid rgba(255,255,255,0.06);
+
+  backdrop-filter:blur(10px);
+
+  -webkit-backdrop-filter:blur(10px);
+}
+
+body.light .glass{
+  background:
+  rgba(255,255,255,0.55);
+
+  border:
+  1px solid rgba(0,0,0,0.06);
+}
+
+/* HERO */
+
+.hero-name{
+  font-size:clamp(4rem,8vw,7rem);
+
+  line-height:0.9;
+
+  font-weight:800;
+
+  letter-spacing:-0.05em;
+
+  color:rgba(255,255,255,0.95);
+
+  text-shadow:
+  0 0 35px rgba(150,160,255,0.12);
+}
+
+.section-title{
+  text-transform:uppercase;
+
+  letter-spacing:0.22em;
+
+  font-size:0.82rem;
+
+  opacity:0.6;
+}
+
+/* BUTTON */
+
+.toggle-btn{
+  border-radius:999px;
+
+  padding:12px 24px;
+
+  transition:
+  transform 0.3s ease;
+}
+
+.toggle-btn:hover{
+  transform:
+  translateY(-2px);
+}
+
+/* PERFORMANCE */
+
+.project-card,
+.book-card,
+.nav-box,
+.impact-card,
+.book-image,
+.book-overlay{
+
+  will-change:
+  transform,
+  opacity;
+
+  transform:
+  translateZ(0);
+
+  backface-visibility:hidden;
+}
+
+/* HOVER */
+
+.project-card,
+.book-card,
+.nav-box,
+.impact-card{
+
+  transition:
+  transform 420ms cubic-bezier(0.22,1,0.36,1),
+  border-color 420ms ease,
+  background 420ms ease;
+}
+
+.project-card:hover,
+.book-card:hover,
+.impact-card:hover{
+
+  transform:
+  translateY(-6px);
+
+  border-color:
+  rgba(160,170,255,0.16);
+}
+
+.nav-box:hover{
+
+  transform:
+  translateX(4px);
+
+  background:
+  rgba(255,255,255,0.06);
+}
+
+/* BOOK */
+
+.book-image{
+
+  transition:
+  transform 700ms cubic-bezier(0.22,1,0.36,1),
+  filter 700ms ease;
+}
+
+.book-card:hover .book-image{
+
+  transform:
+  scale(1.025);
+
+  filter:
+  brightness(1.02);
+}
+
+.book-overlay{
+
+  position:absolute;
+  inset:0;
+
+  background:
+  linear-gradient(
+  to top,
+  rgba(0,0,0,0.25),
+  transparent
+  );
+
+  opacity:0;
+
+  transition:
+  opacity 500ms ease;
+}
+
+.book-card:hover .book-overlay{
+  opacity:1;
+}
+
+/* FADE */
+
+.fade-up{
+  opacity:0;
+
+  transform:
+  translateY(40px);
+
+  transition:
+  0.9s cubic-bezier(.22,1,.36,1);
+}
+
+.fade-up.visible{
+  opacity:1;
+
+  transform:
+  translateY(0);
+}
+
+</style>
 </head>
+
 <body>
 
-<header>
-  <div class="container hero">
-    <div class="eyebrow">Independent Researcher · Builder · Rajasthan, India</div>
+<div class="cursor"></div>
 
-    <h1>Druhi<br>Sarupria</h1>
+<div class="ambient">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+</div>
 
-    <p class="hero-intro">
-      I work at the intersection of <em>healthcare AI</em>,
-      <em>science education</em>, and
-      <em>sustainable systems</em>.
-      <br><br>
-      Currently building <em>CANary</em> — an interpretable machine learning
-      research project exploring pancreatic cancer risk stratification
-      using biomarker datasets and explainable AI.
-    </p>
+<main class="max-w-7xl mx-auto px-6 lg:px-10 py-12 lg:py-24 relative z-10">
 
-    <div class="hero-meta">
-      <div class="meta-pill">17 years old</div>
-      <div class="meta-pill">Self-taught across disciplines</div>
-      <div class="meta-pill">12+ languages</div>
-      <div class="meta-pill">Healthcare AI · Education · Sustainability</div>
-    </div>
-  </div>
-</header>
+<div class="grid lg:grid-cols-[420px_1fr] gap-24">
 
-<section>
-  <div class="container section-grid">
-    <div class="section-label">Introduction</div>
+<!-- SIDEBAR -->
+<aside class="lg:sticky lg:top-0 lg:h-screen flex flex-col justify-between">
 
-    <div class="section-content">
-      <h2>Building under constraints became its own education.</h2>
+<div>
 
-      <p>
-        Most of my work began without formal infrastructure,
-        institutional access, or funding.
-        What started as curiosity gradually became a pattern:
-        identifying difficult real-world problems,
-        teaching myself the tools required to approach them,
-        and building systems around them anyway.
-      </p>
+<div class="flex items-start justify-between gap-6">
 
-      <p>
-        My projects span healthcare machine learning,
-        environmental systems,
-        scientific writing,
-        education access,
-        astronomy,
-        and engineering.
-      </p>
+<div>
 
-      <div class="quote">
-        “How do we make advanced knowledge and technology more accessible
-        to the people who are usually excluded from it?”
-      </div>
-    </div>
-  </div>
+<h1 class="hero-name">
+Druhi<br/>
+Sarupria
+</h1>
+
+<h2 class="mt-6 text-2xl opacity-80 font-medium">
+Researcher, Builder & Writer
+</h2>
+
+</div>
+
+<button
+id="toggleTheme"
+class="toggle-btn glass text-sm">
+Toggle
+</button>
+
+</div>
+
+<p class="mt-10 leading-9 opacity-70 max-w-sm text-[17px]">
+Building systems across AI, healthcare, education, and future technologies.
+</p>
+
+<div class="mt-14 flex flex-col gap-4 text-[15px]">
+
+<a href="#about"
+class="glass nav-box rounded-2xl px-5 py-4 w-fit">
+About
+</a>
+
+<a href="#work"
+class="glass nav-box rounded-2xl px-5 py-4 w-fit">
+Work
+</a>
+
+<a href="#publications"
+class="glass nav-box rounded-2xl px-5 py-4 w-fit">
+Publications
+</a>
+
+<a href="#impact"
+class="glass nav-box rounded-2xl px-5 py-4 w-fit">
+Impact
+</a>
+
+<a href="#contact"
+class="glass nav-box rounded-2xl px-5 py-4 w-fit">
+Contact
+</a>
+
+</div>
+
+</div>
+
+<div class="flex gap-5 text-sm opacity-70 mt-12 lg:mt-0">
+
+<a
+href="https://github.com/Druhi-coder"
+target="_blank">
+GitHub
+</a>
+
+<a
+href="https://www.linkedin.com/in/druhi-sarupria-579635302/"
+target="_blank">
+LinkedIn
+</a>
+
+<a
+href="mailto:druhisaruparia135@gmail.com">
+Email
+</a>
+
+</div>
+
+</aside>
+
+<!-- CONTENT -->
+<section class="space-y-32 pb-24">
+
+<section id="about" class="fade-up">
+
+<p class="section-title mb-8">
+About
+</p>
+
+<div class="space-y-7 text-[18px] leading-9 opacity-75 max-w-3xl">
+
+<p>
+I work at the intersection of AI, healthcare, education, scientific research, and systems design.
+</p>
+
+<p>
+My current focus includes CANary, AiR, and long-term research exploring accessible technology and intelligent systems.
+</p>
+
+</div>
+
 </section>
 
-<section>
-  <div class="container section-grid">
-    <div class="section-label">Featured Work</div>
+<section id="work" class="fade-up">
 
-    <div class="section-content">
-      <h2>Projects grounded in real-world systems.</h2>
+<p class="section-title mb-8">
+Selected Work
+</p>
 
-      <div class="project-grid">
+<div class="space-y-7">
 
-        <div class="card">
-          <div class="card-tag">Healthcare AI</div>
-          <h3>CANary</h3>
+<a
+href="https://canary-scan-ai.vercel.app"
+target="_blank"
+class="project-card glass rounded-[32px] p-9 block">
 
-          <p>
-            Independent machine learning research project focused on
-            interpretable pancreatic cancer risk stratification using
-            urinary biomarker datasets.
-          </p>
+<h3 class="text-3xl font-semibold">
+CANary
+</h3>
 
-          <p>
-            Current work includes Gradient Boosting models,
-            SHAP interpretability,
-            calibration analysis,
-            statistical evaluation,
-            and accessibility-oriented healthcare systems.
-          </p>
+<p class="mt-5 opacity-65 leading-8 max-w-2xl">
+AI-driven healthcare research focused on accessible early-stage cancer detection systems.
+</p>
 
-          <div class="metric-box">
-            <div class="metric">
-              <span>Test AUC-ROC</span>
-              <strong>0.9817</strong>
-            </div>
+</a>
 
-            <div class="metric">
-              <span>5-fold CV AUC</span>
-              <strong>0.9467 ± 0.0142</strong>
-            </div>
+<a
+href="https://air-gamma-gz3wabw.gamma.site"
+target="_blank"
+class="project-card glass rounded-[32px] p-9 block">
 
-            <div class="metric">
-              <span>Bootstrap CI</span>
-              <strong>[0.9556, 0.9970]</strong>
-            </div>
-          </div>
-        </div>
+<h3 class="text-3xl font-semibold">
+AiR
+</h3>
 
-        <div class="card">
-          <div class="card-tag">Education & Community</div>
-          <h3>DRiSe Foundation</h3>
+<p class="mt-5 opacity-65 leading-8 max-w-2xl">
+A wearable AI ecosystem exploring seamless human-device interaction, accessibility, offline intelligence, and contextual assistance systems.
+</p>
 
-          <p>
-            Community-led initiative focused on foundational education,
-            AI literacy,
-            digital access,
-            and STEM accessibility for underserved women and children.
-          </p>
+</a>
 
-          <p>
-            Programs include STEM learning,
-            AI awareness workshops,
-            digital literacy,
-            and self-authored educational material.
-          </p>
+</div>
 
-          <p>
-            Through outreach initiatives and educational programs,
-            over 5,000 women and underprivileged children
-            have been reached across underserved communities.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="card-tag">Sustainability</div>
-          <h3>Dhara Tattva</h3>
-
-          <p>
-            Circular-economy project exploring low-cost environmental systems
-            that convert organic waste into usable products including
-            incense sticks,
-            manure,
-            and recycled paper.
-          </p>
-
-          <p>
-            The initiative has contributed to the management of
-            over 32 tons of organic waste and 27.48 tons of food waste.
-          </p>
-
-          <p>
-            Research verified through IIT Delhi-supported evaluation and
-            presented through national science programs.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="card-tag">Writing & Scientific Communication</div>
-
-          <h3>Books & Scientific Writing</h3>
-
-          <p>
-            Author of educational and scientific writing focused on
-            STEM accessibility,
-            conceptual learning,
-            and science communication.
-          </p>
-
-          <p>
-            Educational books developed for teaching underserved women and children include:
-          </p>
-
-          <p>
-            • Maths for Everyone<br>
-            • My Understanding<br>
-            • My World<br>
-            • My First Computer and AI Book<br>
-            • Language for Life
-          </p>
-
-          <p>
-            Physics and scientific writing projects include:
-          </p>
-
-          <p>
-            • Unsolved Physics Edition<br>
-            • Simplified Scientific Glossary and Glossary
-          </p>
-
-          <p>
-            These works received encouraging responses and feedback from physicists and educators including
-            H.C. Verma,
-            David Tong,
-            and Leonard Susskind.
-          </p>
-
-          <p>
-            Also published:
-          </p>
-
-          <p>
-            • Almost Left Unsaid — a poetry collection exploring introspection, memory, and human emotion.
-          </p>
-
-        </div>
-
-      </div>
-    </div>
-  </div>
 </section>
+
+<section id="publications" class="fade-up">
+
+<p class="section-title mb-8">
+Publications
+</p>
+
+<div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+
+<a
+href="https://www.amazon.in/Unsolved-Physics-Druhi-Sarupria-ebook/dp/B0FVTMJX7W"
+target="_blank"
+class="book-card glass rounded-[32px] block">
+
+<div class="overflow-hidden relative">
+
+<img
+src="./unsolved.jpg"
+class="book-image w-full h-[520px] object-cover"
+alt="Unsolved Physics"
+/>
+
+<div class="book-overlay"></div>
+
+</div>
+
+<div class="p-7">
+
+<h3 class="text-2xl font-semibold">
+Unsolved Physics Edition
+</h3>
+
+<p class="mt-3 opacity-65 leading-7 text-sm">
+Questions that refuse to be answered.
+</p>
+
+</div>
+
+</a>
+
+<a
+href="https://www.amazon.in/Unsolved-Physics-Simplified-Scientific-Glossary-ebook/dp/B0G1HRS6ZM"
+target="_blank"
+class="book-card glass rounded-[32px] block">
+
+<div class="overflow-hidden relative">
+
+<img
+src="./glossary.jpg"
+class="book-image w-full h-[520px] object-cover"
+alt="Scientific Glossary"
+/>
+
+<div class="book-overlay"></div>
+
+</div>
+
+<div class="p-7">
+
+<h3 class="text-2xl font-semibold">
+Simplified Scientific Glossary
+</h3>
+
+<p class="mt-3 opacity-65 leading-7 text-sm">
+Key concepts. Clear definitions. Curious minds.
+</p>
+
+</div>
+
+</a>
+
+<a
+href="https://www.amazon.in/Almost-Left-Unsaid-Poems-Hearts-ebook/dp/B0FMSTMJRK/"
+target="_blank"
+class="book-card glass rounded-[32px] block">
+
+<div class="overflow-hidden relative">
+
+<img
+src="./almost-left-unsaid.png"
+class="book-image w-full h-[520px] object-cover"
+alt="Almost Left Unsaid"
+/>
+
+<div class="book-overlay"></div>
+
+</div>
+
+<div class="p-7">
+
+<h3 class="text-2xl font-semibold">
+Almost, Left Unsaid
+</h3>
+
+<p class="mt-3 opacity-65 leading-7 text-sm">
+Poems for quiet hearts.
+</p>
+
+</div>
+
+</a>
+
+</div>
+
+</section>
+
+<section id="impact" class="fade-up">
+
+<p class="section-title mb-12">
+Impact
+</p>
+
+<div class="grid md:grid-cols-2 gap-6">
+
+<div class="glass rounded-[30px] p-8 impact-card">
+
+<h3 class="text-5xl font-bold">
+10K+
+</h3>
+
+<p class="mt-5 opacity-70 leading-8 text-[15px]">
+People screened through healthcare initiatives and accessibility-focused research efforts.
+</p>
+
+</div>
+
+<div class="glass rounded-[30px] p-8 impact-card">
+
+<h3 class="text-5xl font-bold">
+5K+
+</h3>
+
+<p class="mt-5 opacity-70 leading-8 text-[15px]">
+Women taught through educational and literacy-focused community initiatives.
+</p>
+
+</div>
+
+<div class="glass rounded-[30px] p-8 impact-card">
+
+<h3 class="text-5xl font-bold">
+55+
+</h3>
+
+<p class="mt-5 opacity-70 leading-8 text-[15px]">
+Tons of organic waste managed through sustainability and waste-management systems.
+</p>
+
+</div>
+
+<div class="glass rounded-[30px] p-8 impact-card">
+
+<h3 class="text-5xl font-bold">
+NASA
+</h3>
+
+<p class="mt-5 opacity-70 leading-8 text-[15px]">
+Asteroid discovery through the International Astronomical Search Collaboration.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="contact" class="fade-up pt-10">
+
+<p class="section-title mb-6">
+Contact
+</p>
+
+<h2 class="text-4xl md:text-5xl font-bold leading-tight max-w-3xl">
+Open to research collaborations, ambitious systems problems, and meaningful conversations.
+</h2>
+
+<div class="mt-10 flex flex-wrap gap-5">
+
+<a
+href="mailto:druhisaruparia135@gmail.com"
+class="glass rounded-2xl px-7 py-4">
+Email Me
+</a>
+
+<a
+href="https://www.linkedin.com/in/druhi-sarupria-579635302/"
+target="_blank"
+class="glass rounded-2xl px-7 py-4">
+LinkedIn
+</a>
+
+</div>
+
+</section>
+
+</section>
+
+</div>
+
+</main>
+
+<script>
+
+/* THEME */
+
+const toggleBtn =
+document.getElementById('toggleTheme');
+
+toggleBtn.addEventListener('click', () => {
+  document.body.classList.toggle('light');
+});
+
+/* NAVIGATION */
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+
+  anchor.addEventListener('click', function (e) {
+
+    e.preventDefault();
+
+    const target =
+    document.querySelector(this.getAttribute('href'));
+
+    if(target){
+
+      target.scrollIntoView({
+        behavior:'smooth',
+        block:'start'
+      });
+
+    }
+
+  });
+
+});
+
+/* CURSOR */
+
+const cursor =
+document.querySelector('.cursor');
+
+let mouseX = 0;
+let mouseY = 0;
+
+let currentX = 0;
+let currentY = 0;
+
+document.addEventListener('mousemove',(e)=>{
+
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+
+});
+
+/* BRITTANY STYLE LIGHT */
+
+const ambient =
+document.querySelector('.ambient');
+
+const light =
+document.createElement('div');
+
+light.style.position = 'fixed';
+light.style.width = '500px';
+light.style.height = '500px';
+
+light.style.borderRadius = '999px';
+
+light.style.pointerEvents = 'none';
+
+light.style.background =
+'radial-gradient(circle, rgba(120,140,255,0.12), transparent 70%)';
+
+light.style.filter = 'blur(40px)';
+
+light.style.zIndex = '-1';
+
+ambient.appendChild(light);
+
+/* CURSOR ANIMATION */
+
+function animateCursor(){
+
+  currentX += (mouseX - currentX) * 0.14;
+  currentY += (mouseY - currentY) * 0.14;
+
+  cursor.style.transform =
+  `translate(${currentX}px, ${currentY}px)`;
+
+  light.style.transform =
+  `translate(${currentX - 250}px, ${currentY - 250}px)`;
+
+  requestAnimationFrame(animateCursor);
+
+}
+
+animateCursor();
+
+/* HOVER */
+
+const hoverItems =
+document.querySelectorAll(
+'a, button, .book-card, .project-card, .nav-box'
+);
+
+hoverItems.forEach(item=>{
+
+  item.addEventListener('mouseenter',()=>{
+
+    cursor.classList.add('hovered');
+
+  });
+
+  item.addEventListener('mouseleave',()=>{
+
+    cursor.classList.remove('hovered');
+
+  });
+
+});
+
+/* FADE */
+
+const observer =
+new IntersectionObserver((entries)=>{
+
+  entries.forEach(entry=>{
+
+    if(entry.isIntersecting){
+
+      entry.target.classList.add('visible');
+
+    }
+
+  });
+
+},{threshold:0.1});
+
+document.querySelectorAll('.fade-up').forEach(el=>{
+
+  observer.observe(el);
+
+});
+
+</script>
 
 </body>
 </html>
-
