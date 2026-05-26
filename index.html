@@ -1,22 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>Druhi Sarupria</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Druhi Sarupria | Researcher, Builder & Writer</title>
+
+<meta name="title" content="Druhi Sarupria | Researcher, Builder & Writer">
 
 <meta
 name="description"
-content="Druhi Sarupria — Researcher, Builder & Writer exploring AI, healthcare, education, scientific research, and future technologies."
-/>
+content="Druhi Sarupria is a researcher, founder, writer, and builder working across AI, healthcare, education, sustainability, and future technologies."
+>
 
 <meta
 name="keywords"
-content="Druhi Sarupria, CANary, AiR, AI researcher, healthcare AI, systems design, founder"
-/>
+content="Druhi Sarupria, CANary, AiR, DRISE Foundation, Dhara Tattva, AI researcher, healthcare AI, sustainability, founder, writer, systems design"
+>
 
-<meta name="author" content="Druhi Sarupria" />
+<meta name="author" content="Druhi Sarupria">
+
+<meta name="robots" content="index, follow">
+
+<meta name="theme-color" content="#020617">
+
+<meta property="og:type" content="website">
+
+<meta property="og:title" content="Druhi Sarupria">
+
+<meta
+property="og:description"
+content="Researcher, Builder & Writer exploring AI, healthcare, education, sustainability, and future technologies."
+>
+
+<meta property="og:image" content="unsolved.jpg">
+
+<meta property="og:url" content="https://yourdomain.com">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="twitter:title" content="Druhi Sarupria">
+
+<meta
+name="twitter:description"
+content="Researcher, Builder & Writer exploring AI, healthcare, education, sustainability, and future technologies."
+>
+
+<meta name="twitter:image" content="unsolved.jpg">
+
+<link rel="icon" type="image/png" href="favicon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,23 +61,23 @@ content="Druhi Sarupria, CANary, AiR, AI researcher, healthcare AI, systems desi
 :root{
 --bg:#020617;
 --bg2:#08103a;
---card:#0c1336;
+--card:#0d1437;
 --text:#f8fafc;
 --muted:#94a3b8;
 --border:rgba(255,255,255,.08);
---glow:rgba(59,130,246,.18);
---accent:#7dd3fc;
+--hover:rgba(93,135,255,.14);
+--shadow:rgba(0,0,0,.24);
 }
 
 .light{
 --bg:#ebe4d8;
---bg2:#ddd3c2;
---card:#f5efe4;
+--bg2:#ddd4c4;
+--card:#f5eee2;
 --text:#2b2b2b;
 --muted:#625f5a;
 --border:rgba(0,0,0,.08);
---glow:rgba(120,119,198,.12);
---accent:#5b6ee1;
+--hover:rgba(91,110,225,.10);
+--shadow:rgba(0,0,0,.08);
 }
 
 *{
@@ -54,6 +87,10 @@ box-sizing:border-box;
 scroll-behavior:smooth;
 }
 
+html{
+overflow-x:hidden;
+}
+
 body{
 font-family:'Inter',sans-serif;
 background:
@@ -61,8 +98,10 @@ radial-gradient(circle at top left,var(--bg2),transparent 40%),
 radial-gradient(circle at bottom right,#0f172a,transparent 30%),
 var(--bg);
 color:var(--text);
-transition:.5s ease;
 overflow-x:hidden;
+transition:
+background .4s ease,
+color .4s ease;
 }
 
 body::before{
@@ -71,9 +110,13 @@ position:fixed;
 inset:0;
 pointer-events:none;
 background:
-radial-gradient(circle 120px at var(--x,50%) var(--y,50%), rgba(255,255,255,.08), transparent 70%);
+radial-gradient(
+circle 220px at var(--x,50%) var(--y,50%),
+rgba(255,255,255,.06),
+transparent 70%
+);
 z-index:0;
-transition:.08s linear;
+transition:.06s linear;
 }
 
 .container{
@@ -84,11 +127,11 @@ z-index:2;
 }
 
 .hero{
-min-height:100vh;
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:100px;
 padding:80px 0;
+min-height:100vh;
 }
 
 .left{
@@ -99,49 +142,74 @@ height:max-content;
 
 .name{
 font-size:clamp(4rem,9vw,8rem);
-font-weight:800;
 line-height:.9;
+font-weight:800;
 letter-spacing:-5px;
 }
 
 .role{
+margin-top:28px;
 font-size:2rem;
-margin-top:24px;
-opacity:.9;
+opacity:.92;
+}
+
+.toggle{
+margin-top:28px;
+padding:14px 24px;
+border-radius:999px;
+border:1px solid var(--border);
+background:rgba(255,255,255,.03);
+backdrop-filter:blur(10px);
+color:var(--text);
+cursor:pointer;
+transition:
+transform .35s ease,
+background .35s ease,
+box-shadow .35s ease;
+font-weight:600;
+}
+
+.toggle:hover{
+transform:translateY(-3px);
+background:var(--hover);
+box-shadow:0 12px 30px var(--shadow);
 }
 
 .bio{
 margin-top:40px;
-max-width:500px;
+max-width:520px;
 font-size:1.25rem;
-line-height:1.8;
+line-height:1.9;
 color:var(--muted);
 }
 
 .nav{
-margin-top:60px;
 display:flex;
 flex-direction:column;
 gap:18px;
+margin-top:60px;
 }
 
 .nav a{
-width:max-content;
-padding:16px 24px;
-border-radius:18px;
 text-decoration:none;
 color:var(--text);
+padding:16px 24px;
+width:max-content;
+border-radius:18px;
 background:rgba(255,255,255,.03);
 border:1px solid var(--border);
 backdrop-filter:blur(10px);
-transition:.35s ease;
+transition:
+transform .35s ease,
+background .35s ease,
+box-shadow .35s ease;
 font-weight:600;
 }
 
 .nav a:hover{
 transform:translateX(10px);
-background:var(--glow);
-box-shadow:0 10px 40px rgba(0,0,0,.15);
+background:var(--hover);
+box-shadow:0 12px 30px var(--shadow);
 }
 
 .socials{
@@ -155,29 +223,10 @@ flex-wrap:wrap;
 text-decoration:none;
 color:var(--muted);
 transition:.3s;
-font-weight:500;
 }
 
 .socials a:hover{
 color:var(--text);
-}
-
-.toggle{
-margin-top:30px;
-padding:14px 22px;
-border-radius:999px;
-border:1px solid var(--border);
-background:rgba(255,255,255,.04);
-backdrop-filter:blur(10px);
-color:var(--text);
-cursor:pointer;
-transition:.3s;
-font-weight:600;
-}
-
-.toggle:hover{
-transform:translateY(-2px);
-background:var(--glow);
 }
 
 .right section{
@@ -189,41 +238,40 @@ font-size:.9rem;
 letter-spacing:5px;
 text-transform:uppercase;
 color:var(--muted);
-margin-bottom:30px;
+margin-bottom:32px;
 }
 
 .content{
-font-size:1.4rem;
+font-size:1.35rem;
 line-height:2;
-color:rgba(255,255,255,.88);
-}
-
-.light .content{
-color:#3d3d3d;
 }
 
 .card{
 padding:40px;
-border-radius:32px;
+border-radius:30px;
 background:rgba(255,255,255,.03);
 border:1px solid var(--border);
 backdrop-filter:blur(14px);
 margin-bottom:28px;
-transition:.4s ease;
+transition:
+transform .35s ease,
+background .35s ease,
+box-shadow .35s ease;
 }
 
 .card:hover{
 transform:translateY(-8px);
-background:var(--glow);
+background:var(--hover);
+box-shadow:0 24px 60px var(--shadow);
 }
 
 .card h3{
 font-size:2rem;
-margin-bottom:18px;
+margin-bottom:16px;
 }
 
 .card p{
-font-size:1.1rem;
+font-size:1.08rem;
 line-height:1.9;
 color:var(--muted);
 }
@@ -240,17 +288,21 @@ overflow:hidden;
 border-radius:28px;
 background:rgba(255,255,255,.03);
 border:1px solid var(--border);
-transition:.45s ease;
+transition:
+transform .4s ease,
+box-shadow .4s ease,
+background .4s ease;
 }
 
 .book:hover{
-transform:translateY(-10px) scale(1.02);
-box-shadow:0 20px 60px rgba(0,0,0,.25);
+transform:translateY(-12px) scale(1.02);
+background:var(--hover);
+box-shadow:0 28px 70px var(--shadow);
 }
 
 .book img{
 width:100%;
-height:420px;
+height:460px;
 object-fit:cover;
 display:block;
 }
@@ -261,12 +313,19 @@ padding:24px;
 
 .book-content h4{
 font-size:1.7rem;
-margin-bottom:12px;
+margin-bottom:10px;
 }
 
 .book-content p{
-color:var(--muted);
 line-height:1.8;
+color:var(--muted);
+}
+
+.extra-books{
+margin-top:40px;
+font-size:1.1rem;
+line-height:2;
+color:var(--muted);
 }
 
 .impact{
@@ -277,16 +336,20 @@ margin-top:30px;
 }
 
 .impact-box{
-padding:35px;
+padding:36px;
 border-radius:28px;
 background:rgba(255,255,255,.03);
 border:1px solid var(--border);
-transition:.35s;
+transition:
+transform .35s ease,
+background .35s ease,
+box-shadow .35s ease;
 }
 
 .impact-box:hover{
-transform:translateY(-6px);
-background:var(--glow);
+transform:translateY(-8px);
+background:var(--hover);
+box-shadow:0 24px 60px var(--shadow);
 }
 
 .impact-box h2{
@@ -296,25 +359,30 @@ margin-bottom:10px;
 
 .impact-box p{
 color:var(--muted);
-line-height:1.7;
+line-height:1.8;
 }
 
 .contact-links{
 display:flex;
 flex-direction:column;
-gap:20px;
+gap:22px;
 }
 
 .contact-links a{
 text-decoration:none;
 color:var(--text);
-font-size:1.15rem;
+font-size:1.1rem;
 transition:.3s;
 }
 
 .contact-links a:hover{
 transform:translateX(8px);
-color:var(--accent);
+}
+
+footer{
+padding:80px 0 40px;
+color:var(--muted);
+font-size:.95rem;
 }
 
 @media(max-width:1100px){
@@ -364,30 +432,44 @@ Researcher, Builder & Writer
 </h2>
 
 <button class="toggle" id="themeToggle">
-Toggle Theme
+Toggle
 </button>
 
 <p class="bio">
-Building systems across AI, healthcare, education, scientific research, and future technologies.
+Building systems across AI, healthcare, education, sustainability, and future technologies.
 </p>
 
 <div class="nav">
+
 <a href="#about">About</a>
+
 <a href="#work">Work</a>
+
 <a href="#publications">Publications</a>
+
 <a href="#impact">Impact</a>
+
 <a href="#contact">Contact</a>
+
 </div>
 
 <div class="socials">
 
-<a href="https://github.com/Druhi-coder" target="_blank">GitHub</a>
+<a href="https://github.com/Druhi-coder" target="_blank">
+GitHub
+</a>
 
-<a href="https://www.linkedin.com/in/druhi-sarupria-579635302/" target="_blank">LinkedIn</a>
+<a href="https://www.linkedin.com/in/druhi-sarupria-579635302/" target="_blank">
+LinkedIn
+</a>
 
-<a href="https://medium.com/@druhisaruparia135" target="_blank">Medium</a>
+<a href="https://medium.com/@druhisaruparia135" target="_blank">
+Medium
+</a>
 
-<a href="https://buzzedx.blogspot.com" target="_blank">Blog</a>
+<a href="https://buzzedx.blogspot.com" target="_blank">
+Blog
+</a>
 
 </div>
 
@@ -400,11 +482,13 @@ Building systems across AI, healthcare, education, scientific research, and futu
 <p class="label">About</p>
 
 <div class="content">
-I work at the intersection of AI, healthcare, education, scientific research, and systems design.
+
+I work at the intersection of AI, healthcare, education, scientific research, sustainability, and systems design.
 
 <br><br>
 
-My current focus includes CANary, AiR, and long-term research exploring accessible technology and intelligent systems.
+My current focus includes CANary, AiR, DRISE Foundation, Dhara Tattva, and long-term research exploring accessible technology and intelligent systems designed for large-scale human impact.
+
 </div>
 
 </section>
@@ -414,24 +498,43 @@ My current focus includes CANary, AiR, and long-term research exploring accessib
 <p class="label">Selected Work</p>
 
 <div class="card">
+
 <h3>CANary</h3>
+
 <p>
-AI-driven healthcare research focused on accessible early-stage cancer detection systems.
+AI-driven healthcare research focused on accessible early-stage cancer detection systems and long-term medical accessibility. The project explores how intelligent systems can make preventive healthcare more scalable, affordable, and accessible beyond traditional infrastructure.
 </p>
+
 </div>
 
 <div class="card">
+
 <h3>AiR</h3>
+
 <p>
-A futuristic wearable AI ecosystem exploring intelligent assistance, real-time translation, health monitoring, gesture controls, and seamless human-AI interaction.
+A futuristic wearable AI ecosystem exploring real-time translation, intelligent assistance, gesture controls, health monitoring, and seamless human-AI interaction through accessible wearable computing systems.
 </p>
+
 </div>
 
 <div class="card">
+
 <h3>DRISE Foundation</h3>
+
 <p>
-Educational and social impact initiatives focused on literacy, rural empowerment, and accessible learning opportunities for women and children.
+An education-focused initiative working toward literacy, accessible learning, and long-term empowerment for underprivileged women and children through scalable community-based educational systems and outreach programs.
 </p>
+
+</div>
+
+<div class="card">
+
+<h3>Dhara Tattva</h3>
+
+<p>
+A sustainability and environmental systems initiative focused on organic waste management, ecological awareness, circular environmental practices, and scalable waste-processing solutions designed for real-world implementation.
+</p>
+
 </div>
 
 </section>
@@ -443,42 +546,59 @@ Educational and social impact initiatives focused on literacy, rural empowerment
 <div class="books">
 
 <div class="book">
-<img src="./Druhi Portfolio/unsolved.jpg">
+
+<img src="unsolved.jpg" alt="Unsolved Physics Edition">
 
 <div class="book-content">
+
 <h4>Unsolved Physics Edition</h4>
+
 <p>
 Questions that refuse to be answered.
 </p>
+
 </div>
+
 </div>
 
 <div class="book">
-<img src="./Druhi Portfolio/glossary.jpg">
+
+<img src="glossary.jpg" alt="Simplified Scientific Glossary">
 
 <div class="book-content">
+
 <h4>Simplified Scientific Glossary</h4>
+
 <p>
 Key concepts. Clear definitions. Curious minds.
 </p>
+
 </div>
+
 </div>
 
 <div class="book">
-<img src="./Druhi Portfolio/almost-left-unsaid.png">
+
+<img src="almost-left-unsaid.png" alt="Almost Left Unsaid">
 
 <div class="book-content">
+
 <h4>Almost, Left Unsaid</h4>
+
 <p>
 Poetry and reflections for quiet hearts.
 </p>
+
 </div>
+
 </div>
 
 </div>
 
-<div style="margin-top:40px; color:var(--muted); line-height:2; font-size:1.1rem;">
+<div class="extra-books">
+
 Alongside these publications, I have also written and published 4 educational books designed for underprivileged women and children through DRISE Foundation initiatives.
+
 </div>
 
 </section>
@@ -490,23 +610,43 @@ Alongside these publications, I have also written and published 4 educational bo
 <div class="impact">
 
 <div class="impact-box">
+
 <h2>5K+</h2>
-<p>Women taught through literacy and educational initiatives.</p>
+
+<p>
+Women taught through literacy and educational initiatives.
+</p>
+
 </div>
 
 <div class="impact-box">
+
 <h2>55+</h2>
-<p>Tons of waste managed through environmental and sustainability projects.</p>
+
+<p>
+Tons of waste managed through sustainability and environmental systems.
+</p>
+
 </div>
 
 <div class="impact-box">
+
 <h2>10K+</h2>
-<p>People reached through healthcare and awareness initiatives.</p>
+
+<p>
+People reached through healthcare and awareness initiatives.
+</p>
+
 </div>
 
 <div class="impact-box">
+
 <h2>12</h2>
-<p>Languages spoken or understood across research and communication work.</p>
+
+<p>
+Languages spoken or understood across research and communication work.
+</p>
+
 </div>
 
 </div>
@@ -539,6 +679,10 @@ DRISE Foundation
 
 </section>
 
+<footer>
+© 2026 Druhi Sarupria
+</footer>
+
 </div>
 
 </div>
@@ -550,7 +694,9 @@ DRISE Foundation
 const toggle=document.getElementById('themeToggle');
 
 toggle.addEventListener('click',()=>{
+
 document.body.classList.toggle('light');
+
 });
 
 document.addEventListener('mousemove',(e)=>{
@@ -564,3 +710,4 @@ document.body.style.setProperty('--y',e.clientY+'px');
 
 </body>
 </html>
+```
