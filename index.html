@@ -68,14 +68,21 @@ padding:6rem 0;
 
 .left{
 position:sticky;
-top:0;
-height:100vh;
+top:2rem;
 display:flex;
 flex-direction:column;
 justify-content:flex-start;
-padding-top:5rem;
-padding-bottom:2rem;
-overflow:visible;
+max-height:calc(100vh - 4rem);
+overflow-y:auto;
+padding-right:12px;
+
+/* Hide scrollbar */
+scrollbar-width:none;
+-ms-overflow-style:none;
+}
+
+.left::-webkit-scrollbar{
+display:none;
 }
 
 .name{
