@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://druhi.vercel.app/sitemap.xml
